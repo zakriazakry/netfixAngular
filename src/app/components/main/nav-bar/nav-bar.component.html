@@ -1,0 +1,30 @@
+<nav>
+    <!-- Logo -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="">
+    <s></s>
+    <!-- btn -->
+    @if (!hiddenBtn) {
+    <div class="btnLng">
+        <div class="language">
+            <fa-icon [icon]="faLanguage"></fa-icon>
+            <select name="language" id="">
+                <option value="Ar">
+                    <p>عربي</p>
+                </option>
+                <option value="Ar">
+                    <p>إنجليزي</p>
+                </option>
+            </select>
+        </div>
+         @if (!isAuth) {
+          <button [routerLink]="['/auth/login']" >Sign In</button>
+        }@else{
+          <button>Go Account</button>
+        }
+
+      </div>
+
+    }@else {
+      <s></s>
+    }
+</nav>

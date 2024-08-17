@@ -1,0 +1,72 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+  height: 75vh;
+
+  .imgHero {
+    // position: relative;
+    width: 100%;
+    height: 100%;
+    .paragraf{
+      position: absolute;
+      left: 30%;
+      top: 35%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+      h1{
+        font-size: 45px;
+        font-weight: bold;
+      }
+      p{
+        font-size: 20px;
+      }
+      .sender{
+        margin-top: 15px;
+        width: 80%;
+        display: flex;
+        align-items: center;
+          gap: 10px;
+          justify-content: space-between;
+        input{
+          width: 60%;
+          padding: 15px 10px;
+          border: 1px solid rgb(160, 160, 160);
+          background: #000000a1;
+          border-radius: 2px;
+          font-weight: bold;
+          font-size: 19px;
+        }
+        button{
+          cursor: pointer;
+          width: 37%;
+          background: rgb(216, 14, 14);
+          border: none;
+          border-radius: 5px;
+          font-weight: bold;
+          font-size: 19px;
+          padding: 15px 10px;
+          transition: all ease 0.3s;
+          &:hover{
+            background: rgb(193, 17, 17);
+
+          }
+        }
+      }
+    }
+    .filter {
+      position: absolute;
+      background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(0, 0, 0, 0.8) 100%
+      );
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

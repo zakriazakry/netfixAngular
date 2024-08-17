@@ -1,0 +1,108 @@
+.bglogin {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .login {
+    top: 0;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+
+    .nav {
+      width: 100%;
+    }
+
+    .contianer {
+      background: linear-gradient(rgba(0, 0, 0, 0.799), rgba(0, 0, 0, 0.799));
+      border-radius: 10px;
+      width: 300px;
+      overflow: hidden;
+      height: 65%;
+      margin: 16px 0;
+      padding: 50px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      // inputs
+      input {
+        margin: 10px 0;
+        padding: 20px 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.5);
+        min-width: 100%;
+      }
+
+     .loginbtn {
+        font-weight: 600;
+        width: 100%;
+        margin: 20px 0;
+
+        background: red;
+        color: white;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 6px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: all ease 0.3s;
+
+        &:hover {
+          background: rgb(215, 11, 11);
+        }
+
+      }
+      h4{
+        color: grey;
+      }
+      .new {
+        width: 100%;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.128);
+        color: white;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 6px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: all ease 0.3s;
+
+        &:hover {
+        background: rgba(255, 255, 255, 0.217);
+        }
+
+      }
+      .rememberMe {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: flex-start;
+
+        .check {
+          margin-right: 8px;
+          height: auto;
+          min-width:unset;
+        }
+
+        label {
+          margin: 0;
+        }
+      }
+
+    }
+  }
+}

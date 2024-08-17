@@ -1,0 +1,59 @@
+.error404 {
+    width: 100%;
+    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  background: red;
+  nav {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    background: #000;
+
+    img {
+      padding: 20px 30px;
+      width: 130px;
+    }
+  }
+  .bgcontent{
+    background: blue;
+    height: 100%;
+    width: 100%;
+    background-image: url("https://assets.nflxext.com/ffe/siteui/pages/errors/bg-lost-in-space.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    .content{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #0000003a;
+      gap: 20px;
+      h1{
+        font-weight: bold;
+        font-size: 60px;
+      }
+      p{
+        font-size: 21px;
+        text-align: center;
+      }
+      button  {
+        margin: 0 20px;
+        background:white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all ease 0.3s;
+        &:hover{
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}

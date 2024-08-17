@@ -1,0 +1,52 @@
+@import "../../../../styles.scss";
+
+nav {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  margin: 20px 0;
+  height: 55px;
+  display: flex;
+  justify-content: space-around;
+  .btnLng {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .language {
+    display: flex;
+    border: 1.2px solid rgb(142, 142, 142);
+    border-radius: 5px;
+    gap: 5px;
+justify-content: center;
+align-items: center;
+    padding: 0px 11px;
+  }
+  select {
+    padding: 10px;
+    background: transparent;
+    color: $fontColor;
+    border: none;
+    option {
+      width: 200px;
+      background: #000;
+    }
+  }
+
+  .btnLng button {
+    margin: 0 20px;
+    background: red;
+    color: $fontColor;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    &:hover{
+      background: rgb(215, 11, 11);
+    }
+  }
+
+}
