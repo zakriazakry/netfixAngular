@@ -1,5 +1,4 @@
 import { Routes } from "@angular/router"
-import { MoviesComponent } from "./movies/movies.component";
 
 
 export const HomeRoutes: Routes = [
@@ -11,6 +10,5 @@ export const HomeRoutes: Routes = [
   {
     path: "moves",
     loadChildren: () => import('./movies/movies.module').then(m => m.MoviesModule),
-
   }
 ];

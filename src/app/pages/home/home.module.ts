@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
+import { RouterOutlet } from '@angular/router';
+import { SideBarComponent } from '../../components/main/side-bar/side-bar.component';
+import { HomeComponent } from './home.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule
+     SideBarComponent,
+    RouterOutlet,
   ]
 })
 export class HomeModule { }

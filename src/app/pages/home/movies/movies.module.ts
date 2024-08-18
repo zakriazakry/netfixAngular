@@ -12,7 +12,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     CommonModule,
     MoviesRoutingModule,
-    SideBarComponent, RouterOutlet
+    SideBarComponent, 
+    RouterOutlet
   ]
 })
 

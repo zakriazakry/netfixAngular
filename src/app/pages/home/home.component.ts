@@ -3,8 +3,6 @@ import { SideBarComponent } from "../../components/main/side-bar/side-bar.compon
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [SideBarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
