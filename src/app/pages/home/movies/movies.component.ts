@@ -1,7 +1,7 @@
 import { NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies/movies.service';
-import { HttpClientModule } from '@angular/common/http';
+import { Movie } from '../../../interfaces/movies.interface';
 
 @Component({
   selector: 'app-movies',
@@ -11,20 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent {
-  list: any[] = [];
-
-  constructor(private moviesService: MoviesService) {
-  //  this.getData();
-   this.moviesService.getData().subscribe({
-    next:(data)=>{
-      // this.list = data;
-     console.log(data);
-    }
-   });
-   }
-
-  
-  getData(){
-    
+  list: Movie[] = [];
+  moviesService = inject(MoviesService);
+  isloading:boolean = false;
+  constructor() {
+    this.isloading= true;
+    this.moviesService.getData().subscribe({
+      next: (value) => {
+        this.list = value.slice(50, 65);
+        
+      },complete:()=>this.isloading= false,
+    });
   }
 }

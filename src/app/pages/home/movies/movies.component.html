@@ -11,7 +11,7 @@
       </div>
       <br />
       <img
-        width="150px"
+        width="250px"
         src="https://d1478j0kge9vfg.cloudfront.net/tmpnew/title-treatment%20400.png"
         alt="Logo"
       />
@@ -38,12 +38,21 @@
     <div class="filter"></div>
   </div>
   <!-- libs -->
-   <section *ngFor="let item of list">
+   @if(isloading){
+      <div class="loader"></div>
+   }@else{
+         <section>
     <br>
     <h1>Netfix Movies</h1>
-    <div  class="movies">
-        <img *ngFor="let item of list"  src="https://media.fushaar.com/media/2021/11/19VaTIO5e9MfoXxIMALaEaiGAIN.jpg" alt="">
+    <div class="movies">
+      <div *ngFor="let item of list"  class="movie">
+        <img  [src]="item.stream_icon " alt="">
+        <p>{{ item.name || 'Untitled' }}</p> 
+      </div>
     </div>
-   </section>
+   </section> 
+   }
+ 
   
 </div>
+<!--  "x" -->

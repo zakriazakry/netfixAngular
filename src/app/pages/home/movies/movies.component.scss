@@ -84,7 +84,10 @@
     overflow-y: hidden;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    img{
+    .movie{
+      height: 100%;
+      text-align: center;
+      img{
         border-radius: 10px;
         height: 100%;
         width: 260px;
@@ -95,5 +98,25 @@
           transform: translateY(-20px);
         }
     }
+    }
+   
   }
+
+  /* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #b02a25;
+  --_m: 
+    conic-gradient(#ff000000 10%,#f20000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
 }
