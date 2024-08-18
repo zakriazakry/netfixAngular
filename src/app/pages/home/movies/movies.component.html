@@ -1,3 +1,49 @@
-<h1>
-  sadsasdas
-</h1>
+<div class="home">
+  <div class="hero">
+    <div class="infomation">
+      <div class="logoTitle flex">
+        <img
+          width="10px"
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg"
+          alt="Logo"
+        />
+        <h3>Series</h3>
+      </div>
+      <br />
+      <img
+        width="150px"
+        src="https://d1478j0kge9vfg.cloudfront.net/tmpnew/title-treatment%20400.png"
+        alt="Logo"
+      />
+      <h3>#1 in TV Shows Today</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi eveniet
+        <br />
+        molestiae accusamus quidem consequuntur placeat aut, eius optio
+        dolorem.<br />
+        Optio quis voluptas minima voluptatum nostrum ea aliquid aut eius
+        consequuntur.
+      </p>
+
+      <div class="flex">
+        <button class="PlayBtn">
+          <i class="fa-solid fa-play"></i>
+          Play
+        </button>
+        <button class="More">More info</button>
+      </div>
+    </div>
+
+    <!-- filter -->
+    <div class="filter"></div>
+  </div>
+  <!-- libs -->
+   <section *ngFor="let item of list">
+    <br>
+    <h1>Netfix Movies</h1>
+    <div  class="movies">
+        <img *ngFor="let item of list"  src="https://media.fushaar.com/media/2021/11/19VaTIO5e9MfoXxIMALaEaiGAIN.jpg" alt="">
+    </div>
+   </section>
+  
+</div>

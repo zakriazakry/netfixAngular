@@ -1,8 +1,10 @@
 .sidebar {
   height: 100vh;
+  z-index: 99;
   width: 100px;
+  position: fixed;
+  top: 0;
   background: #111;
-  position: flex;
   ul{
     width: 100%;
     display: flex;
@@ -10,9 +12,11 @@
     align-items: center;
     justify-self: center;
     height: 100vh;
+  
     li {
       list-style: none;
       padding: 10px 0;
+      
       i.app-li {
         color: grey;
         font-size: 30px;
@@ -22,7 +26,7 @@
         border-bottom: 4px solid transparent;
         cursor: pointer;
         &:hover,
-        .active {
+        &.active {
           border-bottom: 4px solid red;
           scale: 1;
           color: white;
@@ -36,12 +40,13 @@
         transition: 0.3s;
 
       }
-
+   
       &:first-child {
         padding: 0;
         margin-top: 0px;
         // margin-bottom: 100px;
       }
+      
     }
 
   }
@@ -68,7 +73,7 @@
           border-radius: 5px;
 
           i{
-            color: rgb(69, 59, 59);
+            color: rgb(171, 171, 171);
             font-size: 30px;
             padding: 20px 0;
             transition: 0.3s;
