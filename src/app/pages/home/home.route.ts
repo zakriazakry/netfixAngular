@@ -5,6 +5,12 @@ import { MoviesComponent } from "./movies/movies.component";
 export const HomeRoutes: Routes = [
   {
     path: "",
-    component: MoviesComponent
+    redirectTo: "moves",
+    pathMatch: "full"
+  },
+  {
+    path: "moves",
+    loadChildren: () => import('./movies/movies.module').then(m => m.MoviesModule),
+
   }
 ];

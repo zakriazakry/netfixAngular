@@ -3,7 +3,7 @@
   width: 100px;
   background: #111;
   position: flex;
-  ul {
+  ul{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@
     li {
       list-style: none;
       padding: 10px 0;
-      i {
+      i.app-li {
         color: grey;
         font-size: 30px;
         padding: 20px 0;
@@ -40,6 +40,7 @@
       &:first-child {
         padding: 0;
         margin-top: 0px;
+        // margin-bottom: 100px;
       }
     }
 
@@ -48,14 +49,14 @@
     position: relative;
     .menu {
       position: absolute;
-      height: 300px;
-      background: rgba(25, 22, 22, 0.81);
+      height: unset;
+      background: rgba(72, 72, 72, 0.81);
       border-radius: 10px;
       ul {
         padding: 8px;
         width: 300px;
-        height: 300px;
-        li {
+        height: unset;
+        li{
           height: 50px;
           width: 90%;
           display: flex;
@@ -65,9 +66,21 @@
           cursor: pointer;
           transition: 0.3s;
           border-radius: 5px;
+
+          i{
+            color: rgb(69, 59, 59);
+            font-size: 30px;
+            padding: 20px 0;
+            transition: 0.3s;
+            scale: 0.9;
+            border-bottom: 4px solid transparent;
+            cursor: pointer;
+
+          }
           &:hover{
             background: #ffffff29;
           }
+
         }
       }
     }

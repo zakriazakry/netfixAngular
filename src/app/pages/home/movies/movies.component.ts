@@ -4,8 +4,6 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
-  standalone: true,
-  imports: [SideBarComponent,RouterOutlet],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss'
 })
