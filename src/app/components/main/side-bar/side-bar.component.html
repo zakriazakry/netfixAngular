@@ -1,0 +1,40 @@
+<div class="sidebar">
+    <ul>
+        <li>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </li>
+        <li>
+            <i class="fa-solid fa-house"></i>
+        </li>
+        <li>
+            <i class="fa-solid fa-film"></i>
+        </li>
+        <li>
+            <i class="fa-solid fa-clapperboard"></i>
+        </li>
+        <li>
+          <i class="fa-solid fa-arrow-down"></i>
+      </li>
+      <li class="account" (click)="showTemplate = !showTemplate">
+        <img src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg" alt="">
+        <ng-container *ngIf="showTemplate">
+          <ng-container *ngTemplateOutlet="accounts"></ng-container>
+        </ng-container>
+
+        <ng-template #accounts>
+          <div class="menu">
+            <ul>
+              <li>
+                <p>Profile</p>
+                <i class="fa-regular fa-user"></i>
+              </li> <li>
+                <p>Subscription</p>
+                <i class="fa-regular fa-user"></i>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+
+      </li>
+    </ul>
+</div>

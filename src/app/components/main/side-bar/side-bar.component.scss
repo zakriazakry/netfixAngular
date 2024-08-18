@@ -1,0 +1,75 @@
+.sidebar {
+  height: 100vh;
+  width: 100px;
+  background: #111;
+  position: flex;
+  ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    height: 100vh;
+    li {
+      list-style: none;
+      padding: 10px 0;
+      i {
+        color: grey;
+        font-size: 30px;
+        padding: 20px 0;
+        transition: 0.3s;
+        scale: 0.9;
+        border-bottom: 4px solid transparent;
+        cursor: pointer;
+        &:hover,
+        .active {
+          border-bottom: 4px solid red;
+          scale: 1;
+          color: white;
+        }
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+
+      }
+
+      &:first-child {
+        padding: 0;
+        margin-top: 0px;
+      }
+    }
+
+  }
+  .account {
+    position: relative;
+    .menu {
+      position: absolute;
+      height: 300px;
+      background: rgba(25, 22, 22, 0.81);
+      border-radius: 10px;
+      ul {
+        padding: 8px;
+        width: 300px;
+        height: 300px;
+        li {
+          height: 50px;
+          width: 90%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 3px 20px;
+          cursor: pointer;
+          transition: 0.3s;
+          border-radius: 5px;
+          &:hover{
+            background: #ffffff29;
+          }
+        }
+      }
+    }
+  }
+}

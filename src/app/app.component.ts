@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from "./components/main/nav-bar/nav-bar.component";
-import { HeroComponent } from "./pages/home/hero/hero.component";
 import { DividerComponent } from './components/main/divider/divider.component';
 import { AdsComponent } from './components/main/ads/ads.component';
+import { HeroComponent } from './components/main/hero/hero.component';
 
 
 @Component({

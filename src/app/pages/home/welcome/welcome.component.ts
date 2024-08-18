@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HeroComponent } from "../hero/hero.component";
-import { AdsComponent } from "../../../components/main/ads/ads.component";
+import { HeroComponent } from '../../../components/main/hero/hero.component';
+import { AdsComponent } from '../../../components/main/ads/ads.component';
 
 @Component({
   selector: 'app-welcome',

@@ -36,6 +36,7 @@ align-items: center;
   }
 
   .btnLng button {
+    cursor: pointer;
     margin: 0 20px;
     background: red;
     color: $fontColor;

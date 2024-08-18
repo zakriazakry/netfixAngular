@@ -29,7 +29,7 @@
       border-radius: 10px;
       width: 300px;
       overflow: hidden;
-      height: 65%;
+      // height: 65%;
       margin: 16px 0;
       padding: 50px 60px;
       display: flex;
@@ -46,8 +46,14 @@
         background: rgba(0, 0, 0, 0.5);
         min-width: 100%;
       }
-
-     .loginbtn {
+      h1{
+        align-self: flex-start;
+      }
+      a{
+        color: rgb(65, 125, 236);
+        text-decoration: none;
+      }
+      .loginbtn {
         font-weight: 600;
         width: 100%;
         margin: 20px 0;
@@ -64,9 +70,8 @@
         &:hover {
           background: rgb(215, 11, 11);
         }
-
       }
-      h4{
+      h4 {
         color: grey;
       }
       .new {
@@ -82,9 +87,8 @@
         transition: all ease 0.3s;
 
         &:hover {
-        background: rgba(255, 255, 255, 0.217);
+          background: rgba(255, 255, 255, 0.217);
         }
-
       }
       .rememberMe {
         display: flex;
@@ -95,14 +99,27 @@
         .check {
           margin-right: 8px;
           height: auto;
-          min-width:unset;
+          min-width: unset;
         }
 
         label {
           margin: 0;
         }
       }
-
+      .info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-size: 13px;
+        margin-bottom: 20%;
+        span {
+          font-weight: bold;
+        }
+        p {
+          color: grey;
+        }
+      }
     }
   }
 }
