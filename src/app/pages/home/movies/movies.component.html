@@ -1,6 +1,8 @@
 <div class="home">
   @if(isloading){
-    <div class="loader"></div>
+    <div class="loading">
+      <div class="loader"></div>
+    </div>
     }@else{
   <div class="hero">
     <div class="infomation">
@@ -14,12 +16,7 @@
       <!-- <h3>#1 in TV Shows Today</h3> -->
       <h3>{{mainMovie?.movie_data?.name}}</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi eveniet
-        <br />
-        molestiae accusamus quidem consequuntur placeat aut, eius optio
-        dolorem.<br />
-        Optio quis voluptas minima voluptatum nostrum ea aliquid aut eius
-        consequuntur.
+        {{mainMovie?.tmdb?.original_title}}
       </p>
       <div class="flex">
         <button class="PlayBtn">
@@ -32,7 +29,7 @@
     <!-- filter -->
     <div class="filter"></div>
     <!-- <img [src]="mainMovie?.info?.movie_image" alt=""> -->
-     <img class="bgImage" [src]="mainMovie?.info?.movie_image" alt="">
+     <img class="bgImage" [src]=" mainMovie?.tmdb?.backdrop_path| tmdb" alt="">
   </div>
   <!-- libs -->
 

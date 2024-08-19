@@ -22,7 +22,7 @@ export class MoviesService {
 
   getMoviesInfo(item: Movie): Observable<MovieDatails> {
     const movieInfoUrl = `${this.base_url}&action=get_vod_info&vod_id=${item.stream_id}`;
-    const tmdbUrl = (tmdb_id: string) => `http://api.themoviedb.org/3/movie/${tmdb_id}?api_key=f584f73e8848d9ace559deee1e5a849f`;
+    const tmdbUrl = (tmdb_id: string) => `http://api.themoviedb.org/3/movie/${tmdb_id}?api_key=f584f73e8848d9ace559deee1e5a849f&language=ar`;
 
     return this.http.get<MovieDatails>(movieInfoUrl).pipe(
       switchMap((movieDetails: MovieDatails) => {

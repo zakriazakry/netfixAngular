@@ -3,11 +3,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies/movies.service';
 import { Movie } from '../../../interfaces/movies.interface';
 import { MovieDatails } from '../../../interfaces/MovieDatails.interface';
+import { TmdbPipe } from '../../../pipes/tmdb.pipe';
 
 @Component({
   selector: 'app-movies',
   standalone:true,
-  imports:[NgFor],
+  imports:[NgFor,TmdbPipe],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
@@ -23,18 +24,25 @@ export class MoviesComponent {
         this.list = value.slice(5000, 5100);
         this.selectMovie(this.list[0]);
       },complete:()=>this.isloading= false,
+      error(err) {
+          console.log(err);
+      },
     });
 
   }
-  selectMovie(item:Movie)
-  {
-    this.moviesService.getMoviesInfo(item).subscribe(movieDetails => {
-      // console.log( movieDetails.info );
-      this.mainMovie = movieDetails;
+  selectMovie(item: Movie) {
+    this.isloading = true;
+    this.moviesService.getMoviesInfo(item).subscribe({
+      next: (movieDetails) => {
+        this.mainMovie = movieDetails;
+        this.isloading = false;
+      },
+      error: (err) => {
+        console.error('Error fetching movie details:', err);
+        this.isloading = false;
+      }
     });
-
   }
-
 }
 
 
