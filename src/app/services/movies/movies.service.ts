@@ -1,17 +1,18 @@
 import { MovieData, MovieDatails, MovieInfo, tmdb } from './../../interfaces/MovieDatails.interface';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, forkJoin, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Movie } from '../../interfaces/movies.interface';
+import { Env } from '../../env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
-
-  private userName = "0921167862";
-  private password = "asg1513edg1t";
+  envs = inject(Env);
+  private userName = this.envs.username;
+  private password = this.envs.password;
   private fake_base_url : string= "http://localhost:4200/assets/database.json";
   private real_base_url : string=  `https://xvip.pro/player_api.php?username=${this.userName}&password=${this.password}`;
   // private base_url: string = this.fake_base_url;

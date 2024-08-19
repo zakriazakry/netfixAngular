@@ -4,11 +4,13 @@ import { MoviesService } from '../../../services/movies/movies.service';
 import { Movie } from '../../../interfaces/movies.interface';
 import { MovieDatails } from '../../../interfaces/MovieDatails.interface';
 import { TmdbPipe } from '../../../pipes/tmdb.pipe';
+import { VideoRunnerPipe } from '../../../pipes/video-runner.pipe';
+import { Env } from '../../../env';
 
 @Component({
   selector: 'app-movies',
   standalone:true,
-  imports:[NgFor,TmdbPipe],
+  imports:[NgFor,TmdbPipe,VideoRunnerPipe],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
@@ -16,6 +18,9 @@ export class MoviesComponent {
   list: Movie[] = [];
    mainMovie:MovieDatails | undefined =undefined;
   moviesService = inject(MoviesService);
+  envs = inject(Env);
+   userName = this.envs.username;
+   password = this.envs.password;
   isloading:boolean = false;
   constructor() {
     this.isloading= true;

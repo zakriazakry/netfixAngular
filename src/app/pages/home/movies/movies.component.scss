@@ -51,6 +51,29 @@
         width: 200px;
         min-height: 270px;
       }
+      a.PlayBtn {
+        text-decoration: none;
+        padding: 12px 25px;
+      margin: 0 2px;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+        background: rgba(255, 255, 255, 0.857);
+        color: black;
+        transition: 0.3s; a{
+          text-decoration: none;
+          color: black;
+        }
+        i {
+          margin: 0 7px;
+          color: black;
+        }
+        &:hover {
+          background: rgba(255, 255, 255, 0.7);
+        }
+      }
       button {
         padding: 12px 25px;
         margin: 0 2px;
@@ -59,18 +82,7 @@
         font-weight: bold;
         border: none;
         cursor: pointer;
-        &.PlayBtn {
-          background: rgba(255, 255, 255, 0.857);
-          color: black;
-          transition: 0.3s;
-          i {
-            margin: 0 7px;
-            color: black;
-          }
-          &:hover {
-            background: rgba(255, 255, 255, 0.7);
-          }
-        }
+
         &.More {
           background: rgba(255, 255, 255, 0.35);
           color: white;

@@ -1,9 +1,9 @@
 <div class="home">
   @if(isloading){
-    <div class="loading">
-      <div class="loader"></div>
-    </div>
-    }@else{
+  <div class="loading">
+    <div class="loader"></div>
+  </div>
+  }@else{
   <div class="hero">
     <div class="infomation">
       <div class="logoTitle flex">
@@ -12,24 +12,28 @@
         <h3>Series</h3>
       </div>
       <br />
-      <img  class="poster" [src]="mainMovie?.info?.movie_image" alt="Logo" />
+      <img class="poster" [src]="mainMovie?.info?.movie_image" alt="Logo" />
       <!-- <h3>#1 in TV Shows Today</h3> -->
       <h3>{{mainMovie?.movie_data?.name}}</h3>
       <p>
         {{mainMovie?.tmdb?.original_title}}
       </p>
       <div class="flex">
-        <button class="PlayBtn">
+
+        <a target="_blank"
+          [href]="(mainMovie?.movie_data?.stream_id + '.' + mainMovie?.movie_data?.container_extension) | videoRunner:userName:password"
+          class="PlayBtn">
           <i class="fa-solid fa-play"></i>
           Play
-        </button>
+        </a>
+
         <button class="More">More info</button>
       </div>
     </div>
     <!-- filter -->
     <div class="filter"></div>
     <!-- <img [src]="mainMovie?.info?.movie_image" alt=""> -->
-     <img class="bgImage" [src]=" mainMovie?.tmdb?.backdrop_path| tmdb" alt="">
+    <img class="bgImage" [src]=" mainMovie?.tmdb?.backdrop_path| tmdb" alt="">
   </div>
   <!-- libs -->
 
