@@ -12,16 +12,18 @@ export class MoviesService {
 
   private userName = "0921167862";
   private password = "asg1513edg1t";
-  private base_url: string = `https://xvip.pro/player_api.php?username=${this.userName}&password=${this.password}`;
-
+  private fake_base_url : string= "http://localhost:4200/assets/database.json";
+  private real_base_url : string=  `https://xvip.pro/player_api.php?username=${this.userName}&password=${this.password}`;
+  // private base_url: string = this.fake_base_url;
   constructor(private http: HttpClient) {}
 
   getData(): Observable<any> {
-    return this.http.get(`${this.base_url}&action=get_vod_streams`);
+    // return this.http.get(`${this.real_base_url}&action=get_vod_streams`);
+    return this.http.get(`${this.fake_base_url}`);
   }
 
   getMoviesInfo(item: Movie): Observable<MovieDatails> {
-    const movieInfoUrl = `${this.base_url}&action=get_vod_info&vod_id=${item.stream_id}`;
+    const movieInfoUrl = `${this.real_base_url}&action=get_vod_info&vod_id=${item.stream_id}`;
     const tmdbUrl = (tmdb_id: string) => `http://api.themoviedb.org/3/movie/${tmdb_id}?api_key=f584f73e8848d9ace559deee1e5a849f&language=ar`;
 
     return this.http.get<MovieDatails>(movieInfoUrl).pipe(
