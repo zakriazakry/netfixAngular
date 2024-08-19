@@ -1,16 +1,16 @@
 .home {
   width: 100%;
-  height: 100vh;
- display: flex;
+  height: auto;
+//  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
     position: relative;
     align-items: center;
   .hero {
     z-index: 1;
     position: relative;
     width: 100%;
-    height: 65%;
+    height: 65vh;
     .bgImage{
       object-position: top;
       height: 100%;
