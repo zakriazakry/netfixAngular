@@ -5,8 +5,8 @@ import { Movie } from '../../../interfaces/movies.interface';
 
 @Component({
   selector: 'app-movies',
-  standalone: true,
-  imports: [NgFor],
+  standalone:true,
+  imports:[NgFor],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
@@ -19,7 +19,7 @@ export class MoviesComponent {
     this.moviesService.getData().subscribe({
       next: (value) => {
         this.list = value.slice(50, 65);
-        
+
       },complete:()=>this.isloading= false,
     });
   }

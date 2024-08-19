@@ -7,11 +7,7 @@ import { MoviesComponent } from './movies/movies.component';
 @Component({
   selector: 'app-home',
   standalone:true,
-  imports: [
-    CommonModule,
-    SideBarComponent,
-    RouterOutlet,MoviesComponent
-  ],
+  imports:[SideBarComponent,RouterOutlet,MoviesComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

@@ -3,7 +3,6 @@ import { authRoutes } from './pages/auth/auth.routes';
 import { Error404Component } from './pages/errors/error404/error404.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MoviesComponent } from './pages/home/movies/movies.component';
 export const routes: Routes = [
   {
     path: '',
@@ -16,17 +15,14 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    // loadChildren: ()=> import("./pages/home/ro").then(m=>m.HomeModule)
-    children:[
-      {
-        path:"",
-      component : HomeComponent,
-      },
-      {
-        path:"movives",
-        component : MoviesComponent,
-      }
-    ]
+    // loadChildren: ()=> import("./pages/home/home.module").then(m=>m.HomeModule)
+      component:HomeComponent
+    // children:[
+    //   {
+    //     path:"movies",
+    //     component:MoviesComponent,
+    //   }
+    // ]
   },
   {
     path: 'auth',
