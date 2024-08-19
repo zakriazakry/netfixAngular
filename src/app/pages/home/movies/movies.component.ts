@@ -21,12 +21,12 @@ export class MoviesComponent {
   envs = inject(Env);
    userName = this.envs.username;
    password = this.envs.password;
-  isloading:boolean = false;
+   isloading: boolean = false;
   constructor() {
     this.isloading= true;
     this.moviesService.getData().subscribe({
       next: (value) => {
-        this.list = value.slice(5000, 5100);
+        this.list = value.slice(this.getRandomInt(100),this.getRandomInt(500));
         this.selectMovie(this.list[0]);
       },complete:()=>this.isloading= false,
       error(err) {
@@ -47,6 +47,9 @@ export class MoviesComponent {
         this.isloading = false;
       }
     });
+  }
+   getRandomInt(max:number) {
+    return Math.floor(Math.random() * max);
   }
 }
 
