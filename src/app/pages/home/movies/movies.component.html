@@ -1,21 +1,18 @@
 <div class="home">
+  @if(isloading){
+    <div class="loader"></div>
+    }@else{
   <div class="hero">
     <div class="infomation">
       <div class="logoTitle flex">
-        <img
-          width="10px"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg"
-          alt="Logo"
-        />
+        <img width="10px" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg"
+          alt="Logo" />
         <h3>Series</h3>
       </div>
       <br />
-      <img
-        width="250px"
-        src="https://d1478j0kge9vfg.cloudfront.net/tmpnew/title-treatment%20400.png"
-        alt="Logo"
-      />
-      <h3>#1 in TV Shows Today</h3>
+      <img  class="poster" [src]="mainMovie?.info?.movie_image" alt="Logo" />
+      <!-- <h3>#1 in TV Shows Today</h3> -->
+      <h3>{{mainMovie?.movie_data?.name}}</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi eveniet
         <br />
@@ -24,7 +21,6 @@
         Optio quis voluptas minima voluptatum nostrum ea aliquid aut eius
         consequuntur.
       </p>
-
       <div class="flex">
         <button class="PlayBtn">
           <i class="fa-solid fa-play"></i>
@@ -33,26 +29,23 @@
         <button class="More">More info</button>
       </div>
     </div>
-
     <!-- filter -->
     <div class="filter"></div>
+    <!-- <img [src]="mainMovie?.info?.movie_image" alt=""> -->
+     <img class="bgImage" [src]="mainMovie?.info?.movie_image" alt="">
   </div>
   <!-- libs -->
-   @if(isloading){
-      <div class="loader"></div>
-   }@else{
-         <section>
+
+  <section>
     <br>
     <h1>Netfix Movies</h1>
     <div class="movies">
-      <div *ngFor="let item of list"  class="movie">
-        <img  [src]="item.stream_icon " alt="">
-        <p>{{ item.name || 'Untitled' }}</p> 
+      <div (click)="selectMovie(item)" *ngFor="let item of list" class="movie">
+        <img [src]="item.stream_icon " alt="">
+        <p>{{ item.name || 'Untitled' }}</p>
       </div>
     </div>
-   </section> 
-   }
- 
-  
+  </section>
+  }
 </div>
 <!--  "x" -->

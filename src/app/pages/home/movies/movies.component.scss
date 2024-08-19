@@ -1,19 +1,22 @@
 .home {
   width: 100%;
   height: 100vh;
-//   display: flex;
+ display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: center;
+    position: relative;
+    align-items: center;
   .hero {
     z-index: 1;
     position: relative;
     width: 100%;
     height: 65%;
-    background-image: url("https://media.fushaar.com/media/2021/11/d0mpUFKzoPwF1KsdjHpkkaYSvKm.jpg");
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: cover;
+    .bgImage{
+      object-position: top;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
     .filter {
       z-index: 2;
       position: absolute;
@@ -41,6 +44,10 @@
         justify-content: start;
         gap: 10px;
         align-items: center;
+      }
+      img.poster{
+        border-radius: 10px;
+        width: 200px;
       }
       button {
         padding: 12px 25px;
@@ -99,17 +106,18 @@
         }
     }
     }
-   
+
   }
 
   /* HTML: <div class="loader"></div> */
 .loader {
+  align-self: center;
   width: 50px;
   padding: 8px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: #b02a25;
-  --_m: 
+  --_m:
     conic-gradient(#ff000000 10%,#f20000),
     linear-gradient(#000 0 0) content-box;
   -webkit-mask: var(--_m);
