@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { MoviesComponent } from './movies/movies.component';
 import { SeriesesComponent } from './serieses/serieses.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TVsComponent } from './tvs/tvs.component';
+import { DownloadsComponent } from './downloads/downloads.component';
 
 const routes: Routes = [
   {
@@ -12,13 +14,22 @@ const routes: Routes = [
   },
   {
     path:"movies",
-    // component:MoviesComponent,
     loadChildren:()=>import("./movies/movies.module").then(m=>m.MoviesModule),
     pathMatch:"full"
   },
   {
     path:"serieses",
     component:SeriesesComponent,
+    pathMatch:"full"
+  },
+  {
+    path:"TVs",
+    component:TVsComponent,
+    pathMatch:"full"
+  },
+  {
+    path:"downloads",
+    component:DownloadsComponent,
     pathMatch:"full"
   },
   {

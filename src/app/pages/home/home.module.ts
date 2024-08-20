@@ -10,6 +10,7 @@ import { VideoRunnerPipe } from '../../pipes/video-runner.pipe';
 import { MoviesModule } from './movies/movies.module';
 import { SeriesesModule } from './serieses/serieses.module';
 import { ProfileComponent } from './profile/profile.component';
+import { TVsComponent } from './tvs/tvs.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
     TmdbPipe,
     VideoRunnerPipe,
     ProfileComponent,
+    TVsComponent,
   ],
   imports: [
     CommonModule,

@@ -4,16 +4,16 @@
       <i class="fa-solid fa-magnifying-glass app-li "></i>
     </li>
     <li>
-      <i class="fa-solid fa-house app-li active"></i>
+      <i class="fa-solid fa-house app-li" routerLink="/home/movies" routerLinkActive ="active"></i>
     </li>
     <li>
-      <i class="fa-solid fa-film app-li"></i>
+      <i class="fa-solid fa-film app-li" [routerLink]="['/home/serieses']" routerLinkActive="active" ></i>
     </li>
     <li>
-      <i class="fa-solid fa-clapperboard app-li"></i>
+      <i class="fa-solid fa-clapperboard app-li"  [routerLink]="['/home/TVs']" routerLinkActive="active"></i>
     </li>
     <li>
-      <i class="fa-solid fa-arrow-down app-li"></i>
+      <i class="fa-solid fa-arrow-down app-li"  [routerLink]="['/home/downloads']" routerLinkActive="active"></i>
     </li>
     <li (click)="showTemplate = !showTemplate" class="account" >
       <img

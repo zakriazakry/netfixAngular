@@ -5,10 +5,10 @@ import { MoviesComponent } from './movies.component';
 const routes: Routes = [{
   path: "",
   component: MoviesComponent
-}];
+},];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes)], 
   exports: [RouterModule]
 })
 export class MoviesRoutingModule { }
