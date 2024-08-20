@@ -11,6 +11,7 @@ import { MoviesModule } from './movies/movies.module';
 import { SeriesesModule } from './serieses/serieses.module';
 import { ProfileComponent } from './profile/profile.component';
 import { TVsComponent } from './tvs/tvs.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TVsComponent } from './tvs/tvs.component';
     VideoRunnerPipe,
     ProfileComponent,
     TVsComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,

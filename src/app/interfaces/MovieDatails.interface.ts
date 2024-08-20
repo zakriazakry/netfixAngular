@@ -11,6 +11,7 @@ export interface MovieInfo {
   releasedate: string;
   backdrop_path: string[];
   duration_secs: number;
+  description:string;
   duration: string;
   video: VideoInfo;
   audio: AudioInfo;

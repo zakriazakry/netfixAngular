@@ -5,6 +5,8 @@ import { SeriesesComponent } from './serieses/serieses.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TVsComponent } from './tvs/tvs.component';
 import { DownloadsComponent } from './downloads/downloads.component';
+import { PlayerComponent } from './player/player.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
     path:"profile",
     component:ProfileComponent,
     pathMatch:"full"
+  },
+  {
+    path: 'search',
+    component:SearchComponent
+  },
+  {
+    path: 'player',
+    component:PlayerComponent
   }
 ];
 

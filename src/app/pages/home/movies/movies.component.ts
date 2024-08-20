@@ -3,8 +3,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies/movies.service';
 import { Movie } from '../../../interfaces/movies.interface';
 import { MovieDatails } from '../../../interfaces/MovieDatails.interface';
-import { TmdbPipe } from '../../../pipes/tmdb.pipe';
-import { VideoRunnerPipe } from '../../../pipes/video-runner.pipe';
 import { Env } from '../../../env';
 
 @Component({
@@ -20,6 +18,7 @@ export class MoviesComponent {
    userName = this.envs.username;
    password = this.envs.password;
    isloading: boolean = false;
+
   constructor() {
     this.isloading= true;
     this.moviesService.getData().subscribe({
@@ -31,13 +30,15 @@ export class MoviesComponent {
           console.log(err);
       },
     });
-
   }
+
+
   selectMovie(item: Movie) {
     this.isloading = true;
     this.moviesService.getMoviesInfo(item).subscribe({
       next: (movieDetails) => {
         this.mainMovie = movieDetails;
+          console.log(this.mainMovie);
         this.isloading = false;
       },
       error: (err) => {
