@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MoviesComponent } from './movies/movies.component';
 import { SeriesesComponent } from './serieses/serieses.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -11,12 +12,18 @@ const routes: Routes = [
   },
   {
     path:"movies",
-    component:MoviesComponent,
+    // component:MoviesComponent,
+    loadChildren:()=>import("./movies/movies.module").then(m=>m.MoviesModule),
     pathMatch:"full"
   },
   {
     path:"serieses",
     component:SeriesesComponent,
+    pathMatch:"full"
+  },
+  {
+    path:"profile",
+    component:ProfileComponent,
     pathMatch:"full"
   }
 ];
