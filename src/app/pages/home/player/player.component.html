@@ -1,5 +1,15 @@
-<div class="video-container" (mousemove)="onMouseMove()">
-  <video #videoElement src="https://lb13.euroott.net/movie/0921167862/asg1513edg1t/411942.mp4?token=NmxkcDBSVFZaYjdTMW8x" (timeupdate)="onTimeUpdate()"></video>
+<div class="home" (keyup)="controllerKeyBoard($event)" >
+
+
+  <video #videoElement  src="https://dl209.filemate20.shop/?file=M3R4SUNiN3JsOHJ6WWQ2a3NQS1Y5ZGlxVlZIOCtyZ0hsOXMweUFKb01ibEZwWWhrbk15aE5jQk9KdXdpeEkycUJjY2Z2Z3JLZE42UEl3cWRvcDAwQ1Z5SDhkOCtzRDdEdUxncFhjeCthVUdxeS9hRnZuOTdtVk96ZU5IQkVJZEdiR056L2dVeDlUK2MyZVhCdXhDOTRWdWd0eG5HUGdKWTkya3REZXpDeWNkTGhFSHNWZURiaE1KVnZRQzNySmRaanJhYXNRNnI3NHQ0dTlCOFcwcGdXcUFBaU1PZ2thS2Y4UWxJMHN0U2l4NzE3K2UrRnBjbkdiR1hkREl0YjNWYnZiNjdDa3hQbm1NTjhYYTdxLzF5dmpGWklQTWxybkdpcFBiclB3PT0%3D" (timeupdate)="onTimeUpdate()"></video>
+  <h1>{{getTime()}} </h1>
+  <button (click)="showLog()">log</button>
+  <button (click)="playVideo()">Play</button>
+  <button (click)="pauseVideo()">pause</button>
+  <button (click)="goFullscreen()">Go Fullscreen</button>
+</div>
+<!-- <div class="video-container" (mousemove)="onMouseMove()">
+  <video #videoElement src="http://xvip.pro/movie/0921167862/asg1513edg1t/411942.mp4" (timeupdate)="onTimeUpdate()"></video>
 
   <div class="controls-container" [ngStyle]="{ opacity: controlsVisible ? '1' : '0' }">
     <div class="progress-controls">
@@ -62,4 +72,4 @@
       </button>
     </div>
   </div>
-</div>
+</div> -->

@@ -81,7 +81,7 @@ document.addEventListener('fullscreenchange', () => {
 
 document.addEventListener('keyup', (event) => {
   if (event.code === 'Space') {
-    playPause(); 
+    playPause();
   }
 
   if (event.code === 'KeyM') {
