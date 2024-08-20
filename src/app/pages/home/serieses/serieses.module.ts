@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { SeriesesRoutingModule } from './serieses-routing.module';
 import { SeriesesComponent } from './serieses.component';
-
+import { HomeModule } from '../home.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +10,9 @@ import { SeriesesComponent } from './serieses.component';
   ],
   imports: [
     CommonModule,
-    SeriesesRoutingModule
-  ]
+    SeriesesRoutingModule,
+    HomeModule
+  ],
+ 
 })
-export class SeriesesModule { }
+export class SeriesesModule {}

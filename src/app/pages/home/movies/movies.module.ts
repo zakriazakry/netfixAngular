@@ -1,19 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MoviesComponent } from './movies.component';
-import { TmdbPipe } from '../../../pipes/tmdb.pipe';
-import { VideoRunnerPipe } from '../../../pipes/video-runner.pipe';
-
+import { HomeModule } from '../home.module';
 
 @NgModule({
-  declarations: [MoviesComponent,
-    TmdbPipe,
-    VideoRunnerPipe
-  ],
+  declarations: [
+    MoviesComponent,
+  ], 
   imports: [
     CommonModule,
-],
-exports:[]
+    HomeModule
+  ],
+  
 })
-
-export class MoviesModule { }
+export class MoviesModule {}

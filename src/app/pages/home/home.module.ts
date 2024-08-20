@@ -1,27 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeRoutingModule } from './home-routing.module';
 import { RouterOutlet } from '@angular/router';
+import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { SideBarComponent } from "../../components/main/side-bar/side-bar.component";
-import { MoviesRoutingModule } from './movies/movies-routing.module';
-import { SeriesesRoutingModule } from './serieses/serieses-routing.module';
-import { MoviesModule } from './movies/movies.module';
+import { SideBarComponent } from '../../components/main/side-bar/side-bar.component';
+import { TmdbPipe } from '../../pipes/tmdb.pipe';
+import { VideoRunnerPipe } from '../../pipes/video-runner.pipe';
 
+import { MoviesModule } from './movies/movies.module';
+import { SeriesesModule } from './serieses/serieses.module';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    TmdbPipe,
+    VideoRunnerPipe,
   ],
   imports: [
     CommonModule,
+    SideBarComponent,
     RouterOutlet,
     HomeRoutingModule,
-    MoviesRoutingModule,
-    SeriesesRoutingModule,
-    SideBarComponent,
-    MoviesModule
-],exports:[HomeComponent]
+    // MoviesModule,
+    // SeriesesModule
+  ],
+  exports: [
+    HomeComponent,
+    TmdbPipe,
+    VideoRunnerPipe
+  ]
 })
-export class HomeModule { }
+export class HomeModule {}

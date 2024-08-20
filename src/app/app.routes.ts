@@ -23,13 +23,6 @@ export const routes: Routes = [
   {
     path: 'player',
     component:PlayerComponent
-    // loadChildren: ()=> import("./pages/home/home.module").then(m=>m.HomeModule)
-    // children:[
-    //   {
-    //     path:"movies",
-    //     component:MoviesComponent,
-    //   }
-    // ]
   },
   {
     path: 'auth',
