@@ -1,54 +1,97 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 @Component({
   selector: 'app-player',
   standalone: true,
   imports: [NgIf],
   templateUrl: './player.component.html',
-  styleUrl: './player.component.scss'
+  styleUrl: './player2.component.scss'
 })
-export class PlayerComponent {
-controllerKeyBoard($event: KeyboardEvent) {
-  console.log($event.code);
-}
-  minCurr = 0;
-  secCurr = 0;
-  minFull = 0;
-  secFull = 0;
-  isPlaying: boolean = false;
+export class PlayerComponent { @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
 
-  @ViewChild('videoElement') video!: ElementRef<HTMLVideoElement>;
+  controlsVisible = false;
+  controlsTimeout: any;
+  watchedPercentage = 0;
+  timeLeft = '00:00';
+  isFullscreen = false;
 
-  goFullscreen(){
-    if (this.video) {
-      const videoElement = this.video.nativeElement;
-      if (!document.fullscreenElement) {
-        videoElement.requestFullscreen();
-      } else {
-        document.exitFullscreen();
-      }
+  displayControls() {
+    this.controlsVisible = true;
+    document.body.style.cursor = 'initial';
+    if (this.controlsTimeout) {
+      clearTimeout(this.controlsTimeout);
+    }
+    this.controlsTimeout = setTimeout(() => {
+      this.controlsVisible = false;
+      document.body.style.cursor = 'none';
+    }, 3000);
+  }
+
+  playPause() {
+    const video = this.videoRef.nativeElement;
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
     }
   }
-  showLog() {
-    console.log(this.video.nativeElement.src);
+
+  rewind() {
+    this.videoRef.nativeElement.currentTime -= 10;
   }
-  playVideo() {
-    this.video.nativeElement.play();
-    this.isPlaying = true;
+
+  fastForward() {
+    this.videoRef.nativeElement.currentTime += 10;
   }
-  pauseVideo() {
-    this.video.nativeElement.pause();
-    this.isPlaying = false;
+
+  toggleMute() {
+    const video = this.videoRef.nativeElement;
+    video.muted = !video.muted;
   }
-  getTime(): String {
-    return `${this.minCurr}:${this.secCurr} / ${this.minFull}:${this.secFull}`;
+
+  toggleFullScreen() {
+    const videoContainer = this.videoRef.nativeElement.parentElement!;
+    if (!this.isFullscreen) {
+      if (videoContainer.requestFullscreen) {
+        videoContainer.requestFullscreen();
+      }
+      this.isFullscreen = true;
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+      this.isFullscreen = false;
+    }
   }
-  onTimeUpdate() {
-    this.minCurr = Math.floor(this.video.nativeElement.currentTime / 60);
-    this.secCurr = Math.floor(this.video.nativeElement.currentTime % 60);
-    this.minFull = Math.floor(this.video.nativeElement.duration / 60);
-    this.secFull = Math.floor(this.video.nativeElement.duration % 60);
-    console.log(`curr : ${this.minCurr}:${this.secCurr.toFixed(2)}`);
-    console.log(`full : ${this.minFull.toFixed(2)}:${this.secFull.toFixed(2)}`);
+
+  updateTime() {
+    const video = this.videoRef.nativeElement;
+    const watched = (video.currentTime / video.duration) * 100;
+    this.watchedPercentage = watched;
+    const timeLeft = video.duration - video.currentTime;
+    this.timeLeft = this.formatTime(timeLeft);
+  }
+
+  seek(event: MouseEvent) {
+    const progressBar = event.target as HTMLElement;
+    const rect = progressBar.getBoundingClientRect();
+    const offsetX = event.clientX - rect.left;
+    const video = this.videoRef.nativeElement;
+    video.currentTime = (offsetX / rect.width) * video.duration;
+  }
+
+  formatTime(seconds: number): string {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${this.pad(minutes)}:${this.pad(secs)}`;
+  }
+
+  pad(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
+  }
+
+  @HostListener('document:fullscreenchange', [])
+  onFullScreenChange() {
+    this.isFullscreen = !!document.fullscreenElement;
   }
 }

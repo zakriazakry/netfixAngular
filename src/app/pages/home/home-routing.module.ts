@@ -42,10 +42,6 @@ const routes: Routes = [
   {
     path: 'search',
     component:SearchComponent
-  },
-  {
-    path: 'player',
-    component:PlayerComponent
   }
 ];
 
