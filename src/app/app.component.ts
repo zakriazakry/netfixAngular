@@ -6,7 +6,6 @@ import { AdsComponent } from './components/main/ads/ads.component';
 import { HeroComponent } from './components/main/hero/hero.component';
 import { SideBarComponent } from "./components/main/side-bar/side-bar.component";
 
-
 @Component({
   selector: 'app-root',
   standalone: true,

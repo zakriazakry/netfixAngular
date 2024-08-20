@@ -1,8 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'videoRunner',
-  standalone: true
+  name: 'videoRunner'
 })
 export class VideoRunnerPipe implements PipeTransform {
 

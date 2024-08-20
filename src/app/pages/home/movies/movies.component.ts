@@ -9,8 +9,6 @@ import { Env } from '../../../env';
 
 @Component({
   selector: 'app-movies',
-  standalone:true,
-  imports:[NgFor,TmdbPipe,VideoRunnerPipe],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })

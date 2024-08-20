@@ -1,8 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'tmdb',
-  standalone: true
+  name: 'tmdb'
 })
 export class TmdbPipe implements PipeTransform {
 

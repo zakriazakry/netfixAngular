@@ -1,21 +1,19 @@
-// import { NgModule } from '@angular/core';
-// import { CommonModule, NgFor } from '@angular/common';
-
-// import { MoviesRoutingModule } from './movies-routing.module';
-// import { MoviesComponent } from './movies.component';
-// import { SideBarComponent } from '../../../components/main/side-bar/side-bar.component';
-// import { RouterOutlet } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule, NgFor } from '@angular/common';
+import { MoviesComponent } from './movies.component';
+import { TmdbPipe } from '../../../pipes/tmdb.pipe';
+import { VideoRunnerPipe } from '../../../pipes/video-runner.pipe';
 
 
-// @NgModule({
-//   declarations: [MoviesComponent],
-//   imports: [
-//     CommonModule,
-//     NgFor,
-//     MoviesRoutingModule,
-//     SideBarComponent,
-//     RouterOutlet
-//   ]
-// })
+@NgModule({
+  declarations: [MoviesComponent,
+    TmdbPipe,
+    VideoRunnerPipe
+  ],
+  imports: [
+    CommonModule,
+],
+exports:[]
+})
 
-// export class MoviesModule { }
+export class MoviesModule { }
