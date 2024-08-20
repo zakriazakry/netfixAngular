@@ -6,6 +6,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import { Movie } from '../../interfaces/movies.interface';
 import { Env } from '../../env';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,7 @@ export class MoviesService {
 
   getData(): Observable<any> {
     // return this.http.get(`${this.real_base_url}&action=get_vod_streams`);
-    return this.http.get(`${this.fake_base_url}`);
+    return this.http.get<Observable<any>>(`${this.fake_base_url}`);
   }
 
   getMoviesInfo(item: Movie): Observable<MovieDatails> {
