@@ -4,6 +4,8 @@ import { MoviesService } from '../../../services/movies/movies.service';
 import { Movie } from '../../../interfaces/movies.interface';
 import { MovieDatails } from '../../../interfaces/MovieDatails.interface';
 import { Env } from '../../../env';
+import { Router } from '@angular/router';
+import { VideoRunnerPipe } from '../../../pipes/video-runner.pipe';
 
 @Component({
   selector: 'app-movies',
@@ -15,6 +17,8 @@ export class MoviesComponent {
    mainMovie:MovieDatails | undefined =undefined;
   moviesService = inject(MoviesService);
   envs = inject(Env);
+  route = inject(Router);
+  videoRunner = inject(VideoRunnerPipe);
    userName = this.envs.username;
    password = this.envs.password;
    isloading: boolean = false;
@@ -38,7 +42,6 @@ export class MoviesComponent {
     this.moviesService.getMoviesInfo(item).subscribe({
       next: (movieDetails) => {
         this.mainMovie = movieDetails;
-          console.log(this.mainMovie);
         this.isloading = false;
       },
       error: (err) => {
@@ -50,6 +53,27 @@ export class MoviesComponent {
    getRandomInt(max:number) {
     return Math.floor(Math.random() * max);
   }
+
+  playMainMovieUrl: string = '';
+
+  ngOnInit(): void {
+    this.playMainMovieUrl = this.getVideoUrl();
+  }
+  
+  getVideoUrl(): string {
+    return this.videoRunner.transform(
+      `${this.mainMovie?.movie_data?.stream_id}.${this.mainMovie?.movie_data?.container_extension}`,
+      this.userName,
+      this.password
+    ) as string;
+  }
+  playMainMovie(url:any){
+  
+    this.route.navigate(['/player'], { 
+      queryParams: { videoUrl:url } 
+    });
+  }
+
 }
 
 

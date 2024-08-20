@@ -1,5 +1,6 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, HostListener, inject } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-player',
   standalone: true,
@@ -14,6 +15,23 @@ export class PlayerComponent { @ViewChild('video') videoRef!: ElementRef<HTMLVid
   watchedPercentage = 0;
   timeLeft = '00:00';
   isFullscreen = false;
+  router =inject(Router);
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const value = params['key'];
+      console.log("=================");
+      console.log(value);
+    });
+  }
+
+
+
+
+
+
 
   displayControls() {
     this.controlsVisible = true;
