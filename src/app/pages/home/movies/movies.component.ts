@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { MoviesService } from '../../../services/movies/movies.service';
 import { Movie } from '../../../interfaces/movies.interface';
 import { MovieDatails } from '../../../interfaces/MovieDatails.interface';
@@ -13,6 +13,7 @@ import { VideoRunnerPipe } from '../../../pipes/video-runner.pipe';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent {
+  @ViewChild('homePage', { static: false }) homePage!: ElementRef<HTMLDivElement>;
   list: Movie[] = [];
    mainMovie:MovieDatails | undefined =undefined;
   moviesService = inject(MoviesService);
@@ -48,7 +49,10 @@ export class MoviesComponent {
         this.isloading = false;
       }
     });
+
   }
+
+
    getRandomInt(max:number) {
     return Math.floor(Math.random() * max);
   }
@@ -58,14 +62,14 @@ export class MoviesComponent {
   ngOnInit(): void {
     this.playMainMovieUrl = this.getVideoUrl();
   }
-  
+
   getVideoUrl(): string {
     const streamId = this.mainMovie?.movie_data?.stream_id;
     const containerExtension = this.mainMovie?.movie_data?.container_extension;
     const videoUrl = `${streamId}.${containerExtension}`;
     return this.videoRunner.transform(videoUrl, this.userName, this.password) as string;
   }
-  
+
   playMainMovie(url:any){
   this.route.navigate(['/player'], { queryParams: { url: url,title :this.mainMovie?.tmdb?.original_title.toLowerCase()} });
   }

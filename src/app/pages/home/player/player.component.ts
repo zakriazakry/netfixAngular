@@ -6,22 +6,23 @@ import { ActivatedRoute, Router } from '@angular/router';
   standalone: true,
   imports: [NgIf],
   templateUrl: './player.component.html',
-  styleUrl: './player2.component.scss'
+  styleUrl: './player.component.scss'
 })
-export class PlayerComponent { @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
+export class PlayerComponent {
+  @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
   videoUrl: string | null = null;
   title: string | null = null;
   controlsVisible = false;
   controlsTimeout: any;
   watchedPercentage = 0;
-  timeLeft = '00:00';
+  timeLeft = '00:00:00';
   isFullscreen = false;
   router =inject(Router);
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+ this.route.queryParams.subscribe(params => {
     console.log("=================");
       console.log(params);
       this.videoUrl = params['url'];
@@ -29,12 +30,6 @@ export class PlayerComponent { @ViewChild('video') videoRef!: ElementRef<HTMLVid
     });
 
   }
-
-
-
-
-
-
 
   displayControls() {
     this.controlsVisible = true;
@@ -44,7 +39,7 @@ export class PlayerComponent { @ViewChild('video') videoRef!: ElementRef<HTMLVid
     }
     this.controlsTimeout = setTimeout(() => {
       this.controlsVisible = false;
-      document.body.style.cursor = 'none';
+      // document.body.style.cursor = 'none';
     }, 3000);
   }
 
@@ -114,6 +109,7 @@ export class PlayerComponent { @ViewChild('video') videoRef!: ElementRef<HTMLVid
 
   @HostListener('document:fullscreenchange', [])
   onFullScreenChange() {
+
     this.isFullscreen = !!document.fullscreenElement;
   }
 }
