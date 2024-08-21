@@ -116,11 +116,15 @@
       justify-content: center;
       list-style: none;
       gap: 20px;
-      li.active{
-        transition: all 0.4s;
-        padding: 5px 0;
+     li{
+      border-bottom: 4px solid transparent;
+      transition: all 0.4s;
+      padding: 5px 0;
+      cursor: pointer;
+      &.active{
         border-bottom: 4px solid red;
       }
+     }
     }
   }
   // section

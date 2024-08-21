@@ -46,13 +46,14 @@
         <img class="bg-image" src="https://i.ytimg.com/vi/WHXxVmeGQUc/maxresdefault.jpg" alt="">
         <!-- tab-bar -->
           <ul class="tab-bar">
-            <li class="active">OVERVIEW</li>
-            <li >TRAILERS & MORE</li>
-            <li>MORE LIKE THIS</li>
-            <li>DETAILS</li>
+            <li routerLink="overview" [routerLinkActive]="'active'" >OVERVIEW</li>
+            <li routerLink="trailers-more" [routerLinkActive]="'active'" >TRAILERS & MORE</li>
+            <li routerLink="more-like-this" [routerLinkActive]="'active'" >MORE LIKE THIS</li>
           </ul>
     </div>
     <!-- any data -->
      <!--  -->
-    <section class="dataVeiw"></section>
+    <section class="dataVeiw">
+      <router-outlet></router-outlet>
+    </section>
 </div>

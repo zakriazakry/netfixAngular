@@ -11,8 +11,8 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: DetailsComponent,
-    pathMatch: 'full'
+    component:DetailsComponent,
+    loadChildren:()=>import("./details/details.module").then(m=>m.DetailsModule)
   }
 ];
 
