@@ -9,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './player2.component.scss'
 })
 export class PlayerComponent { @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
-
+  videoUrl: string | null = null;
+  title: string | null = null;
   controlsVisible = false;
   controlsTimeout: any;
   watchedPercentage = 0;
@@ -21,10 +22,12 @@ export class PlayerComponent { @ViewChild('video') videoRef!: ElementRef<HTMLVid
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const value = params['key'];
-      console.log("=================");
-      console.log(value);
+    console.log("=================");
+      console.log(params);
+      this.videoUrl = params['url'];
+      this.title = params['title'];
     });
+
   }
 
 
@@ -99,9 +102,10 @@ export class PlayerComponent { @ViewChild('video') videoRef!: ElementRef<HTMLVid
   }
 
   formatTime(seconds: number): string {
-    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor(Math.floor(seconds / 60)%60);
     const secs = Math.floor(seconds % 60);
-    return `${this.pad(minutes)}:${this.pad(secs)}`;
+    return `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(secs)}`;
   }
 
   pad(value: number): string {

@@ -18,12 +18,11 @@ export class MoviesComponent {
   moviesService = inject(MoviesService);
   envs = inject(Env);
   route = inject(Router);
-  videoRunner = inject(VideoRunnerPipe);
    userName = this.envs.username;
    password = this.envs.password;
    isloading: boolean = false;
 
-  constructor() {
+  constructor(private videoRunner: VideoRunnerPipe) {
     this.isloading= true;
     this.moviesService.getData().subscribe({
       next: (value) => {
@@ -53,7 +52,7 @@ export class MoviesComponent {
    getRandomInt(max:number) {
     return Math.floor(Math.random() * max);
   }
-
+//=======================
   playMainMovieUrl: string = '';
 
   ngOnInit(): void {
@@ -61,17 +60,14 @@ export class MoviesComponent {
   }
   
   getVideoUrl(): string {
-    return this.videoRunner.transform(
-      `${this.mainMovie?.movie_data?.stream_id}.${this.mainMovie?.movie_data?.container_extension}`,
-      this.userName,
-      this.password
-    ) as string;
+    const streamId = this.mainMovie?.movie_data?.stream_id;
+    const containerExtension = this.mainMovie?.movie_data?.container_extension;
+    const videoUrl = `${streamId}.${containerExtension}`;
+    return this.videoRunner.transform(videoUrl, this.userName, this.password) as string;
   }
-  playMainMovie(url:any){
   
-    this.route.navigate(['/player'], { 
-      queryParams: { videoUrl:url } 
-    });
+  playMainMovie(url:any){
+  this.route.navigate(['/player'], { queryParams: { url: url,title :this.mainMovie?.tmdb?.original_title.toLowerCase()} });
   }
 
 }

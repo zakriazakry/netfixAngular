@@ -1,6 +1,6 @@
 <div class="video-container" (mousemove)="displayControls()">
   <video #video 
-         src="http://xvip.pro/movie/0921167862/asg1513edg1t/412123.mkv"
+         [src]="videoUrl"
          (timeupdate)="updateTime()" 
          (click)="playPause()">
   </video>
@@ -51,8 +51,8 @@
       </button>
       
       <p class="title">
-        <span class="series">Blender Foundation</span>
-        <span class="episode">Big Buck Bunny</span>
+        <span class="series">{{title}}</span>
+        <!-- <span class="episode">Big Buck Bunny</span> -->
       </p>
       
       <button class="full-screen" (click)="toggleFullScreen()">

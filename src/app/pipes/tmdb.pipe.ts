@@ -1,7 +1,10 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'tmdb'
+})
+@Injectable({
+  providedIn: 'root'  // This makes the pipe available as a singleton service throughout the app
 })
 export class TmdbPipe implements PipeTransform {
 
