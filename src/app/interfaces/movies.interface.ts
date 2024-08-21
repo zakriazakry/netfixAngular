@@ -2,7 +2,7 @@ export interface Movie {
     num: number;
     name: string;
     stream_type: string;
-    stream_id: number;
+    stream_id: string;
     stream_icon: string;
     rating: string;
     rating_5based: number;

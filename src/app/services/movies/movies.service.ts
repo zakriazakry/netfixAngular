@@ -54,4 +54,22 @@ export class MoviesService {
       })
     );
   }
+  getMovieInfoById(id:string):Observable<MovieDatails> {
+    const fakeitem :Movie = {
+      stream_id: id,
+      num: 0,
+      name: '',
+      stream_type: '',
+      stream_icon: '',
+      rating: '',
+      rating_5based: 0,
+      added: '',
+      is_adult: '',
+      category_id: '',
+      container_extension: '',
+      custom_sid: '',
+      direct_source: ''
+    };
+   return this.getMoviesInfo(fakeitem);
+  }
 }

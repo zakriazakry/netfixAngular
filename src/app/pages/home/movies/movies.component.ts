@@ -28,7 +28,7 @@ export class MoviesComponent {
     this.isloading= true;
     this.moviesService.getData().subscribe({
       next: (value) => {
-        this.list = value.slice(this.getRandomInt(100),this.getRandomInt(500));
+        this.list = value.slice(4450,4550);
         this.selectMovie(this.list[0]);
       },complete:()=>this.isloading= false,
       error(err) {

@@ -6,6 +6,8 @@ import { DetailsComponent } from './details.component';
 import { OverviewComponent } from './overview/overview.component';
 import { TRAILERSandMOREComponent } from './trailersand-more/trailersand-more.component';
 import { MORELIKETHISComponent } from './morelikethis/morelikethis.component';
+import { HomeModule } from "../../home.module";
+import { ConvertToDatePipe } from "../../../../pipes/convert-to-date.pipe";
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { MORELIKETHISComponent } from './morelikethis/morelikethis.component';
   ],
   imports: [
     CommonModule,
-    DetailsRoutingModule
-  ]
+    DetailsRoutingModule,
+    HomeModule,
+    ConvertToDatePipe
+]
 })
 export class DetailsModule { }

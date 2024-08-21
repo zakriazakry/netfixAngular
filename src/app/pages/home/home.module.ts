@@ -12,6 +12,7 @@ import { SeriesesModule } from './serieses/serieses.module';
 import { ProfileComponent } from './profile/profile.component';
 import { TVsComponent } from './tvs/tvs.component';
 import { SearchComponent } from './search/search.component';
+import { NavBarComponent } from "../../components/main/nav-bar/nav-bar.component";
 
 
 @NgModule({
@@ -22,13 +23,15 @@ import { SearchComponent } from './search/search.component';
     ProfileComponent,
     TVsComponent,
     SearchComponent,
+    
   ],
   imports: [
     CommonModule,
     SideBarComponent,
     RouterOutlet,
-    HomeRoutingModule
-  ],
+    HomeRoutingModule,
+    NavBarComponent
+],
   exports: [
     HomeComponent,
     TmdbPipe,
