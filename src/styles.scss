@@ -5,6 +5,11 @@ $fontColor:white;
   src: url("assets/fonts/font.woff2");
 }
 
+@font-face {
+  font-family: "Punishment";
+  src: url("assets/fonts/Punishment.otf");
+}
+
 *{
   padding: 0;
   margin: 0;
@@ -48,4 +53,14 @@ body{
 
 *::-webkit-scrollbar-thumb:active {
   background-color: #FF0000;
+}
+
+
+@keyframes view {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 }

@@ -7,6 +7,7 @@ import { TVsComponent } from './tvs/tvs.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { PlayerComponent } from './player/player.component';
 import { SearchComponent } from './search/search.component';
+import { DetailsComponent } from './movies/details/details.component';
 
 const routes: Routes = [
   {
@@ -17,27 +18,23 @@ const routes: Routes = [
   {
     path:"movies",
     loadChildren:()=>import("./movies/movies.module").then(m=>m.MoviesModule),
-    pathMatch:"full"
+    // pathMatch:"full"
   },
   {
     path:"serieses",
-    component:SeriesesComponent,
-    pathMatch:"full"
+    component:SeriesesComponent
   },
   {
     path:"TVs",
-    component:TVsComponent,
-    pathMatch:"full"
+    component:TVsComponent
   },
   {
     path:"downloads",
-    component:DownloadsComponent,
-    pathMatch:"full"
+    component:DownloadsComponent
   },
   {
     path:"profile",
-    component:ProfileComponent,
-    pathMatch:"full"
+    component:ProfileComponent
   },
   {
     path: 'search',

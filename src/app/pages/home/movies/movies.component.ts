@@ -4,7 +4,7 @@ import { MoviesService } from '../../../services/movies/movies.service';
 import { Movie } from '../../../interfaces/movies.interface';
 import { MovieDatails } from '../../../interfaces/MovieDatails.interface';
 import { Env } from '../../../env';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VideoRunnerPipe } from '../../../pipes/video-runner.pipe';
 
 @Component({
@@ -19,6 +19,7 @@ export class MoviesComponent {
   moviesService = inject(MoviesService);
   envs = inject(Env);
   route = inject(Router);
+  myRoute = inject(ActivatedRoute);
    userName = this.envs.username;
    password = this.envs.password;
    isloading: boolean = false;
@@ -52,6 +53,9 @@ export class MoviesComponent {
 
   }
 
+  goToMovive(item:Movie){
+    this.route.navigate([item.stream_id],{relativeTo: this.myRoute});
+  }
 
    getRandomInt(max:number) {
     return Math.floor(Math.random() * max);

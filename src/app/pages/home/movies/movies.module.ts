@@ -7,8 +7,8 @@ import { VideoRunnerPipe } from '../../../pipes/video-runner.pipe';
 
 @NgModule({
   declarations: [
-    MoviesComponent
-  ], 
+    MoviesComponent,
+  ],
   imports: [
     CommonModule,
     MoviesRoutingModule,
