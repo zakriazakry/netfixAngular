@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavBarComponent } from "../../../components/main/nav-bar/nav-bar.component";
-import { RouterLink, Routes } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { NavBarComponent } from '../../../components/main/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +11,4 @@ import { RouterLink, Routes } from '@angular/router';
 })
 export class SignupComponent {
 
-  goToCreateAccount(){
-
-  }
 }
