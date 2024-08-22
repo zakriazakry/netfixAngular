@@ -28,7 +28,7 @@ export class MoviesComponent {
     this.isloading= true;
     this.moviesService.getData().subscribe({
       next: (value) => {
-        this.list = value.slice(4450,4550);
+        this.list = value.slice(4450,4495);
         this.selectMovie(this.list[0]);
       },complete:()=>this.isloading= false,
       error(err) {
@@ -56,6 +56,10 @@ export class MoviesComponent {
   goToMovive(item:Movie){
     this.route.navigate([item.stream_id],{relativeTo: this.myRoute});
   }
+
+  // goToMoviveById(stream_id:any){
+  //   this.route.navigate([stream_id],{relativeTo: this.myRoute});
+  // }
 
    getRandomInt(max:number) {
     return Math.floor(Math.random() * max);

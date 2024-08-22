@@ -18,9 +18,9 @@
         </div>
          <!-- @if (!isAuth) { -->
           @if (isAuth) {
+            <button [routerLink]="['/home']">Go Account</button>
+          }@else{
           <button [routerLink]="['/auth/login']" >Sign In</button>
-        }@else{
-          <button [routerLink]="['/home']">Go Account</button>
         }
 
       </div>
