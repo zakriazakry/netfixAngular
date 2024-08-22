@@ -4,6 +4,7 @@ import { AuthRes } from '../../interfaces/AuthRes.interface';
 
 import { environment } from '../../../environments/environment.development';
 import { catchError, throwError } from 'rxjs';
+import { ConfigationService } from '../configation.service';
 
 
 
@@ -12,7 +13,11 @@ import { catchError, throwError } from 'rxjs';
 })
 export class AuthService {
   http = inject(HttpClient);
-  constructor() { }
+  cnf = inject(ConfigationService);
+
+  constructor() {
+
+  }
   isAuth(): boolean {
     // and check the token is Exist in database
      const tokenExist = true;
@@ -21,24 +26,24 @@ export class AuthService {
     /*
     Login Func
     */
-   login(email:string,password:string):AuthRes
+  async login(email:string,password:string):Promise<boolean>
    {
-    this.http.post(environment.baseUrl+"auth/login",{
+    const url = await this.cnf.getUrl();
+    // console.log(url);
+    // return;
+    this.http.post(`${url}auth/login`,{
       "email" :email,
       "password" : password
-    }).subscribe({
+    },).subscribe({
       next(value) {
           console.log(value);
+     return false;
       },
       error(err) {
           console.log(err);
       },
     });
-     return {
-       errorMsg:null,
-       status:true,
-       token:"ooooooooooo"
-      };
+     return false;
     }
   private handleError(error: any) {
     console.error('An error occurred:', error);

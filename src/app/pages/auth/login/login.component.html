@@ -8,7 +8,7 @@
         <input type="email" required placeholder="Email or mobile number" >
         <input type="password" required placeholder="Password" >
         <br>
-        <button class="loginbtn">Sign In</button>
+        <button (click)="login()" class="loginbtn">Sign In</button>
         <h4>OR</h4>
         <button class="new" [routerLink]="['/auth/signup']">New Account</button>
         <div class="rememberMe">

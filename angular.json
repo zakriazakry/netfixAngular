@@ -30,7 +30,8 @@
               "src/assets",
               "src/assets/js",
               "src/assets/fonts",
-              "src/assets/database.json"
+              "src/assets/database.json",
+              "src/assets/config.json"
             ],
             "styles": [
               "src/styles.scss"
