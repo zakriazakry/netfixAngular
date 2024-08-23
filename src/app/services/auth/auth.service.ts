@@ -4,6 +4,7 @@ import { apiRes } from '../../interfaces/apiRes.interface';
 
 import { environment } from '../../../environments/environment.development';
 import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 
@@ -12,19 +13,22 @@ import { throwError } from 'rxjs';
 })
 export class AuthService {
   http = inject(HttpClient);
-  
+  router = inject(Router);
+
   constructor() {
-    
+
   }
   isAuth(): boolean {
     // and check the token is Exist in database
     const tokenExist = true;
     return !!localStorage.getItem('token');
   }
+  
   /*
   Login Func
   */
- async login(email: string, password: string): Promise<apiRes> {
+  
+  async login(email: string, password: string): Promise<apiRes> {
     const url = `${environment.baseUrl}auth/login`;
     return new Promise((resolve, reject) => {
       this.http.post<apiRes>(url, {
@@ -32,7 +36,7 @@ export class AuthService {
         "password": password
       }).subscribe({
         next(value: apiRes) {
-          localStorage.setItem('token',value.msg!)
+          localStorage.setItem('token', value.msg!)
           resolve(value);
         },
         error(err) {
@@ -45,20 +49,31 @@ export class AuthService {
     });
   }
 
-  async signup(userInput:object): Promise<apiRes>{
+  /*
+   signup Func
+   */
+
+  async signup(userInput: object): Promise<apiRes> {
     const url = `${environment.baseUrl}auth/signup`
-    return new Promise((resolve,reject)=>{
-      this.http.post<apiRes>(url,userInput).subscribe({
-        next(value : apiRes) {
+    return new Promise((resolve, reject) => {
+      this.http.post<apiRes>(url, userInput).subscribe({
+        next(value: apiRes) {
           resolve(value);
-        },error(err) {
+        }, error(err) {
           reject({
-            status:false,
+            status: false,
             msg: err.error.msg
           });
         },
       });
     });
+  }
+/*
+   logout Func
+   */
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/'],{replaceUrl:true});
   }
 }
 

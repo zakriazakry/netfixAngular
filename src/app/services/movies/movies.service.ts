@@ -4,20 +4,22 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, forkJoin, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Movie } from '../../interfaces/movies.interface';
-import { Env } from '../../env';
+import { environment } from '../../../environments/environment.development';
+ 
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
-  envs = inject(Env);
-  private userName = this.envs.username;
-  private password = this.envs.password;
+  // envs = inject(Env);
+  http = inject(HttpClient);
+  private userName = environment.username;
+  private password = environment.password;
   private fake_base_url : string= "/assets/database.json";
   private real_base_url : string=  `https://xvip.pro/player_api.php?username=${this.userName}&password=${this.password}`;
   // private base_url: string = this.fake_base_url;
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getData(): Observable<any> {
     // return this.http.get(`${this.real_base_url}&action=get_vod_streams`);

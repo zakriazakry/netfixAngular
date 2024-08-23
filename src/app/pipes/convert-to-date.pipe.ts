@@ -1,8 +1,10 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'convertToDate',
-  standalone: true
+  name: 'convertToDate',standalone: true
+})
+@Injectable({
+  providedIn: 'root'  // This makes the pipe available as a singleton service throughout the app
 })
 export class ConvertToDatePipe implements PipeTransform {
 

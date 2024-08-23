@@ -3,21 +3,47 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../../../../services/movies/movies.service';
 import { MovieDatails } from '../../../../interfaces/MovieDatails.interface';
 import { VideoRunnerPipe } from '../../../../pipes/video-runner.pipe';
-import { Env } from '../../../../env';
+import { environment } from '../../../../../environments/environment.development';
+import { OverviewComponent } from './overview/overview.component';
+import { TRAILERSandMOREComponent } from './trailersand-more/trailersand-more.component';
+import { MORELIKETHISComponent } from './morelikethis/morelikethis.component';
+import { HomeModule } from '../../home.module';
+import { CommonModule, NgComponentOutlet, NgFor, NgIf } from '@angular/common';
+import { ConvertToDatePipe } from '../../../../pipes/convert-to-date.pipe';
 
 @Component({
   selector: 'app-details',
+  standalone:true,
+  imports:[HomeModule,CommonModule,ConvertToDatePipe],
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
+changePage(_i: number) {
+  this.index= _i;
+}
   isloading = true;
   movie!: MovieDatails;
   movieId!: string | null;
   playMainMovieUrl = '';
-  envs = inject(Env);
-  private userName = this.envs.username;
-  private password = this.envs.password;
+  userName = environment.username;
+  password = environment.password;
+
+  pages = [
+    {
+      component: OverviewComponent,
+      name: 'OVERVIEW',
+    },
+    {
+      component: TRAILERSandMOREComponent,
+      name: 'TRAILERS & MORE',
+    },
+    {
+      component: MORELIKETHISComponent,
+      name: 'MORE LIKE THIS',
+    },
+  ];
+  index = 0;
 
   constructor(
     private videoRunner: VideoRunnerPipe,
@@ -25,14 +51,12 @@ export class DetailsComponent {
     private router: Router,
     private movieService: MoviesService
   ) {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.movieId = params.get('id');
       if (this.movieId) {
         this.fetchMovieDetails(this.movieId);
       }
     });
-      console.log(this.envs);
-
   }
 
   private fetchMovieDetails(id: string): void {
@@ -46,7 +70,7 @@ export class DetailsComponent {
       error: (err) => {
         console.error('Error fetching movie details:', err);
         this.isloading = false;
-      }
+      },
     });
   }
 
@@ -60,10 +84,19 @@ export class DetailsComponent {
       return '';
     }
     const videoUrl = `${streamId}.${containerExtension}`;
-    return this.videoRunner.transform(videoUrl, this.userName, this.password) as string;
+    return this.videoRunner.transform(
+      videoUrl,
+      this.userName,
+      this.password
+    ) as string;
   }
 
   playMainMovie(url: string): void {
-    this.router.navigate(['/player'], { queryParams: { url, title: this.movie?.tmdb?.original_title?.toLowerCase() } });
+    this.router.navigate(['/player'], {
+      queryParams: {
+        url,
+        title: this.movie?.tmdb?.original_title?.toLowerCase(),
+      },
+    });
   }
 }

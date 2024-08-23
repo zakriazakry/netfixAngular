@@ -11,8 +11,10 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component:DetailsComponent,
-    loadChildren:()=>import("./details/details.module").then(m=>m.DetailsModule)
+    component: DetailsComponent,
+    pathMatch:"full"
+    // loadComponent:()=> import("./details/details.component").then(m=>m.DetailsComponent)
+    // loadChildren:()=>import("./details/details.module").then(m=>m.DetailsModule)
   }
 ];
 

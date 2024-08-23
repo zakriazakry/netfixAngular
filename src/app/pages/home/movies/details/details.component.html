@@ -66,19 +66,16 @@
     />
     <!-- tab-bar -->
     <ul class="tab-bar">
-      <li routerLink="overview" [routerLinkActive]="'active'">OVERVIEW</li>
-      <li routerLink="trailers-more" [routerLinkActive]="'active'">
-        TRAILERS & MORE
-      </li>
-      <li routerLink="more-like-this" [routerLinkActive]="'active'">
-        MORE LIKE THIS
-      </li>
+      <li  *ngFor="let item of pages;let i =index"   [class.active]="i == index"
+      (click)="changePage(i)"
+      >{{item.name}}</li>
     </ul>
   </div>
   <!-- any data -->
   <!--  -->
   <section class="dataVeiw">
-    <router-outlet></router-outlet>
+    <!-- <router-outlet></router-outlet> -->
+     <ng-container *ngComponentOutlet="pages[index].component"></ng-container>
   </section>
   }
 </div>

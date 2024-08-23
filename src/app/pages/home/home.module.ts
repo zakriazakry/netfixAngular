@@ -6,14 +6,11 @@ import { HomeComponent } from './home.component';
 import { SideBarComponent } from '../../components/main/side-bar/side-bar.component';
 import { TmdbPipe } from '../../pipes/tmdb.pipe';
 import { VideoRunnerPipe } from '../../pipes/video-runner.pipe';
-
-import { MoviesModule } from './movies/movies.module';
-import { SeriesesModule } from './serieses/serieses.module';
 import { ProfileComponent } from './profile/profile.component';
 import { TVsComponent } from './tvs/tvs.component';
 import { SearchComponent } from './search/search.component';
 import { NavBarComponent } from "../../components/main/nav-bar/nav-bar.component";
-
+import { ConvertToDatePipe } from '../../pipes/convert-to-date.pipe';
 
 @NgModule({
   declarations: [
@@ -23,19 +20,19 @@ import { NavBarComponent } from "../../components/main/nav-bar/nav-bar.component
     ProfileComponent,
     TVsComponent,
     SearchComponent,
-    
+
   ],
   imports: [
     CommonModule,
     SideBarComponent,
     RouterOutlet,
-    HomeRoutingModule,
+    HomeRoutingModule, 
     NavBarComponent
-],
+  ],
   exports: [
     HomeComponent,
     TmdbPipe,
     VideoRunnerPipe
   ]
 })
-export class HomeModule {}
+export class HomeModule { }
