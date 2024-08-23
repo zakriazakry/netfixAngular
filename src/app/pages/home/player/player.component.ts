@@ -22,13 +22,8 @@ export class PlayerComponent {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
- this.route.queryParams.subscribe(params => {
-    console.log("=================");
-      console.log(params);
-      this.videoUrl = params['url'];
-      this.title = params['title'];
-    });
-
+   this.videoUrl = history.state['url'];
+      this.title = history.state['title'];
   }
 
   displayControls() {

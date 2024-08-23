@@ -3,9 +3,9 @@ import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { MoviesService } from '../../../services/movies/movies.service';
 import { Movie } from '../../../interfaces/movies.interface';
 import { MovieDatails } from '../../../interfaces/MovieDatails.interface';
-import { Env } from '../../../env';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VideoRunnerPipe } from '../../../pipes/video-runner.pipe';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-movies',
@@ -17,11 +17,10 @@ export class MoviesComponent {
   list: Movie[] = [];
    mainMovie:MovieDatails | undefined =undefined;
   moviesService = inject(MoviesService);
-  envs = inject(Env);
   route = inject(Router);
   myRoute = inject(ActivatedRoute);
-   userName = this.envs.username;
-   password = this.envs.password;
+   userName = environment .username;
+   password = environment.password;
    isloading: boolean = false;
 
   constructor(private videoRunner: VideoRunnerPipe) {
@@ -32,7 +31,6 @@ export class MoviesComponent {
         this.selectMovie(this.list[0]);
       },complete:()=>this.isloading= false,
       error(err) {
-          console.log(err);
       },
     });
   }
@@ -79,7 +77,7 @@ export class MoviesComponent {
   }
 
   playMainMovie(url:any){
-  this.route.navigate(['/player'], { queryParams: { url: url,title :this.mainMovie?.tmdb?.original_title.toLowerCase()} });
+  this.route.navigate(['/player'], { state: { url: url,title :this.mainMovie?.tmdb?.original_title.toLowerCase()} });
   }
 
 }

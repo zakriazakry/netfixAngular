@@ -13,15 +13,15 @@ import { ConvertToDatePipe } from '../../../../pipes/convert-to-date.pipe';
 
 @Component({
   selector: 'app-details',
-  standalone:true,
-  imports:[HomeModule,CommonModule,ConvertToDatePipe],
+  standalone: true,
+  imports: [HomeModule, CommonModule, ConvertToDatePipe],
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
-changePage(_i: number) {
-  this.index= _i;
-}
+  changePage(_i: number) {
+    this.index = _i;
+  }
   isloading = true;
   movie!: MovieDatails;
   movieId!: string | null;
@@ -93,10 +93,11 @@ changePage(_i: number) {
 
   playMainMovie(url: string): void {
     this.router.navigate(['/player'], {
-      queryParams: {
+      state: {
         url,
         title: this.movie?.tmdb?.original_title?.toLowerCase(),
       },
     });
+
   }
 }

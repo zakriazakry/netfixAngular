@@ -17,8 +17,7 @@ export class NavBarComponent {
    auth = inject(AuthService);
   constructor(){
     this.isAuth = this.auth.isAuth();
-    console.log("-----------");
-    console.log(this.isAuth);
+
   }
 }
 
