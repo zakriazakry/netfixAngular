@@ -93,3 +93,35 @@ body{
     }
   }
   }
+
+  // msgs
+
+  .errorMsg {
+    text-align: center;
+    width: 100%;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb; 
+    border-radius: .25rem;     
+    margin: .5rem 0;           
+    padding: .75rem 1.25rem;   
+    color: #721c24;            
+  }
+
+.loadingBtn {
+  margin: auto;
+  width: 20px;
+  // height: 50px;
+  padding: 5px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffffff;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l32 1s infinite linear;
+}
+@keyframes l32 {to{transform: rotate(1turn)}}

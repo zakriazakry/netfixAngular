@@ -14,7 +14,7 @@ export class MoviesService {
   envs = inject(Env);
   private userName = this.envs.username;
   private password = this.envs.password;
-  private fake_base_url : string= "http://localhost:4200/assets/database.json";
+  private fake_base_url : string= "/assets/database.json";
   private real_base_url : string=  `https://xvip.pro/player_api.php?username=${this.userName}&password=${this.password}`;
   // private base_url: string = this.fake_base_url;
   constructor(private http: HttpClient) {}
