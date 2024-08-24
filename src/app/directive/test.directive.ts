@@ -5,7 +5,9 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 })
 export class TestDirective {
 
-  constructor(private ref:ElementRef ) { }
+  constructor(private ref:ElementRef ) {
+    console.log("tester");
+  }
 
   @HostListener("focus") onFouces() {
     console.log("focus");

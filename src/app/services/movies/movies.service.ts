@@ -5,7 +5,7 @@ import { Observable, forkJoin, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Movie } from '../../interfaces/movies.interface';
 import { environment } from '../../../environments/environment.development';
- 
+
 
 
 @Injectable({
@@ -21,7 +21,7 @@ export class MoviesService {
   // private base_url: string = this.fake_base_url;
   constructor() {}
 
-  getData(): Observable<any> {
+  getData(page?:number): Observable<any> {
     // return this.http.get(`${this.real_base_url}&action=get_vod_streams`);
     return this.http.get<Observable<any>>(`${this.fake_base_url}`);
   }

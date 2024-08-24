@@ -160,6 +160,9 @@
         &:hover {
           transform: translateY(-20px);
         }
+        &.active{
+          border: 2px solid white;
+        }
       }
     }
   }

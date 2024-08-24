@@ -1,36 +1,30 @@
 <div class="sidebar">
   <ul>
     <li>
-      <i class="fa-solid fa-magnifying-glass app-li" [routerLink]="['/home/search']" routerLinkActive="active" ></i>
+      <i class="fa-solid fa-magnifying-glass app-li" [routerLink]="['/home/search']" routerLinkActive="active"></i>
     </li>
     <li>
-      <i class="fa-solid fa-house app-li" routerLink="/home/movies" routerLinkActive ="active"></i>
+      <i class="fa-solid fa-house app-li" routerLink="/home/movies" routerLinkActive="active"></i>
     </li>
     <li>
-      <i class="fa-solid fa-film app-li" [routerLink]="['/home/serieses']" routerLinkActive="active" ></i>
+      <i class="fa-solid fa-film app-li" [routerLink]="['/home/serieses']" routerLinkActive="active"></i>
     </li>
     <li>
-      <i class="fa-solid fa-clapperboard app-li"  [routerLink]="['/home/TVs']" routerLinkActive="active"></i>
+      <i class="fa-solid fa-clapperboard app-li" [routerLink]="['/home/TVs']" routerLinkActive="active"></i>
     </li>
     <li>
-      <i class="fa-solid fa-arrow-down app-li"  [routerLink]="['/home/downloads']" routerLinkActive="active"></i>
+      <i class="fa-solid fa-arrow-down app-li" [routerLink]="['/home/downloads']" routerLinkActive="active"></i>
     </li>
-    <li (click)="showTemplate = !showTemplate" class="account" >
-      <img
-        src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"
-        alt="Profile Picture"
-      />
-
-      <!-- استخدام ng-container مع *ngIf لعرض القالب عند النقر -->
+    <li (click)="toggleMenu()" class="account">
+      <img class="non-out" src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg" alt="Profile Picture" />
       <ng-container *ngIf="showTemplate">
         <ng-container *ngTemplateOutlet="accounts"></ng-container>
       </ng-container>
     </li>
   </ul>
 
-  <!-- القالب ng-template خارج القائمة -->
   <ng-template #accounts>
-    <div class="menu">
+    <div class="menu non-out" appMenuShower [excludedClass]="'non-out'">
       <ul>
         <li>
           <p>Profile</p>
@@ -43,7 +37,7 @@
         <li>
           <p>Settings</p>
           <i class="fa-solid fa-gear"></i>
-        </li>  
+        </li>
         <li (click)="auth.logout()">
           <p>Logout</p>
           <i class="fa-solid fa-arrow-right-from-bracket"></i>

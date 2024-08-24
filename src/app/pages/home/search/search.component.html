@@ -1,1 +1,20 @@
-<p>search works!</p>
+<div class="search-section">
+  <input type="text" placeholder="Search Now!">
+  <button>بحث</button>
+</div>
+
+<ul>
+  <li *ngFor="let item of items; let i = index;">
+    <app-movie-card  [item]="item"></app-movie-card>
+  </li>
+</ul>
+<!-- pagtnation -->
+
+<div class="pagnation">
+  <i class="fas fa-angle-left"></i>
+  <ul>
+    <li *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13];let first = first" [class.active]="first">{{item}}</li>
+  </ul>
+  <i class="fas fa-angle-right"></i>
+
+</div>

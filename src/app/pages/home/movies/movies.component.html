@@ -42,8 +42,8 @@
     <br>
     <h1>Netfix Movies</h1>
     <div class="movies">
-      <div (click)="goToMovive(item)" *ngFor="let item of list" class="movie">
-        <img [src]="item.stream_icon " alt="">
+      <div (click)="goToMovive(item)" *ngFor="let item of list;let first = first" class="movie">
+        <img [class.active] = "first" [src]="item.stream_icon " alt="">
         <p>{{ item.name || 'Untitled' }}</p>
       </div>
     </div>
