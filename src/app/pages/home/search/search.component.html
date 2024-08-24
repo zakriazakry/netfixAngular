@@ -11,10 +11,10 @@
 <!-- pagtnation -->
 
 <div class="pagnation">
-  <i class="fas fa-angle-left"></i>
+  <i class="fas fa-angle-left" (click)="changePage('prev')"></i>
   <ul>
-    <li *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13];let first = first" [class.active]="first">{{item}}</li>
+    <li *ngFor="let item of getListOfPagination();let i = index" (click)="changePage(i)"  [class.active]="item === currentPage">{{item}}</li>
   </ul>
-  <i class="fas fa-angle-right"></i>
+  <i class="fas fa-angle-right" (click)="changePage('next')"></i>
 
 </div>
