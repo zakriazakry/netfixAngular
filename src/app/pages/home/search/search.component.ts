@@ -9,8 +9,9 @@ import { MoviesService } from '../../../services/movies/movies.service';
 })
 export class SearchComponent {
   items: Movie[] = [];
-  fakedata: any[] = [...Array(100).keys()]; // Example data
-  itemsPerPage: number = 5;
+  Allitems: Movie[] = [];
+  inputSearch: string = '';
+  itemsPerPage: number = 21;
   currentPage: number = 1;
   isLoading: boolean = false;
   hasMore: boolean = true;  // Indicates if there are more items to load
@@ -28,9 +29,8 @@ export class SearchComponent {
     this.moviesService.getData(this.page).subscribe({
       next: (value: Movie[]) => {
         if (value.length > 0) {
-          // this.items = [...this.items, ...value];
-
-          this.items = value.slice(51,65);
+          this.items = value;
+          this.Allitems = value;
           this.page++;
         } else {
           this.hasMore = false;
@@ -41,15 +41,26 @@ export class SearchComponent {
     });
   }
 
+  // search
+  search() {
+    const lowerCaseValue = this.inputSearch.toLowerCase().trim();
+
+    this.items = this.Allitems.filter(item =>
+      item.name.toLowerCase().trim().includes(lowerCaseValue)
+    );
+  }
+
+
+
   // pagnation
   get totalPages(): number {
-    return Math.ceil(this.fakedata.length / this.itemsPerPage);
+    return Math.ceil(this.items.length / this.itemsPerPage);
   }
 
   get paginatedData(): any[] {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.fakedata.slice(start, end);
+    return this.items.slice(start, end);
   }
 
   getListOfPagination(): (string | number)[] {
@@ -90,6 +101,7 @@ export class SearchComponent {
   }
 
   changePage(page: number | string): void {
+    console.log(page);
     if (page === 'prev') {
       if (this.currentPage > 1) {
         this.currentPage--;

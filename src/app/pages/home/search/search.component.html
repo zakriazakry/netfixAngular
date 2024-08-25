@@ -1,20 +1,20 @@
 <div class="search-section">
-  <input type="text" placeholder="Search Now!">
-  <button>بحث</button>
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input [(ngModel)]="inputSearch" (keyup)="search()"  type="text" placeholder="Search Now!">
+  <!-- <button (click)="search()">بحث</button> -->
 </div>
 
 <ul>
-  <li *ngFor="let item of items; let i = index;">
+  <li *ngFor="let item of paginatedData; let i = index;">
     <app-movie-card  [item]="item"></app-movie-card>
   </li>
 </ul>
 <!-- pagtnation -->
 
 <div class="pagnation">
-  <i class="fas fa-angle-left" (click)="changePage('prev')"></i>
+  <button class="fas fa-angle-left" (click)="changePage('prev')"></button>
   <ul>
     <li *ngFor="let item of getListOfPagination();let i = index" (click)="changePage(i)"  [class.active]="item === currentPage">{{item}}</li>
   </ul>
-  <i class="fas fa-angle-right" (click)="changePage('next')"></i>
-
+  <button class="fas fa-angle-right" (click)="changePage('next')"></button>
 </div>

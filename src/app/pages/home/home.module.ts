@@ -13,6 +13,7 @@ import { NavBarComponent } from "../../components/main/nav-bar/nav-bar.component
 import { ConvertToDatePipe } from '../../pipes/convert-to-date.pipe';
 import { MovieCardComponent } from "../../components/cards/movie-card/movie-card.component";
 import { AppBarComponent } from "../../components/main/app-bar/app-bar.component";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,6 @@ import { AppBarComponent } from "../../components/main/app-bar/app-bar.component
     ProfileComponent,
     TVsComponent,
     SearchComponent,
-
   ],
   imports: [
     CommonModule,
@@ -30,6 +30,7 @@ import { AppBarComponent } from "../../components/main/app-bar/app-bar.component
     RouterOutlet,
     HomeRoutingModule,
     NavBarComponent,
+    FormsModule,
     MovieCardComponent,
     AppBarComponent
 ],

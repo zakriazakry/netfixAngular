@@ -1,4 +1,4 @@
-.search-section{
+.search-section {
   width: 480px;
   height: 50px;
   margin: 10px;
@@ -6,41 +6,42 @@
   gap: 20px;
   justify-content: center;
   align-items: center;
-  input{
+  input {
     height: 70%;
     width: 100%;
     background: rgba(28, 28, 28, 0.764);
     color: #fff;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     padding: 3px 10px;
     border: none;
     outline: none;
     border-radius: 5px;
-    &::focus{
+    &::focus {
       border: none;
       outline: none;
     }
   }
-  button{
+  button {
     width: 25%;
     height: 70%;
     cursor: pointer;
     background: white;
     color: #000;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
   }
 }
 
-ul{
+ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   list-style: none;
 }
-.pagnation{
+.pagnation {
   width: 100%;
   font-size: 20px;
   display: flex;
@@ -48,30 +49,34 @@ ul{
   margin: 40px 0;
   justify-content: center;
   border-radius: 5px;
-  ul{
-    all:unset;
-      height: 100%;
-      margin: 0 10px;
-      list-style: none;
+  ul {
+    all: unset;
+    height: 100%;
+    width: 100%;
+    margin: 0 10px;
+    list-style: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 500px;
-    li{
+    max-width: 500px;
+    li {
       cursor: pointer;
       padding: 5px 10px;
       margin: 5px;
       border-radius: 5px;
-      &.active{
+      &.active {
         background: rgb(28, 26, 26);
       }
     }
   }
-  i{
-      padding: 8px 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      &:hover{
+  button {
+    padding: 8px 10px;
+    background: #000;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
       background: rgb(28, 26, 26);
     }
   }

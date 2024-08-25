@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { SearchRoutingModule } from './search-routing.module';
 import { MovieCardComponent } from '../../../components/cards/movie-card/movie-card.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,10 +12,7 @@ import { MovieCardComponent } from '../../../components/cards/movie-card/movie-c
   declarations: [],
   imports: [
     CommonModule,
-
     MovieCardComponent,
-
-    InfiniteScrollModule,
     SearchRoutingModule
   ]
 })
