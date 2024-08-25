@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   http = inject(HttpClient);
   router = inject(Router);
-
   constructor() {
 
   }
@@ -23,12 +23,13 @@ export class AuthService {
     const tokenExist = true;
     return !!localStorage.getItem('token');
   }
-  
+
   /*
   Login Func
   */
-  
+
   async login(email: string, password: string): Promise<apiRes> {
+
     const url = `${environment.baseUrl}auth/login`;
     return new Promise((resolve, reject) => {
       this.http.post<apiRes>(url, {
@@ -68,12 +69,12 @@ export class AuthService {
       });
     });
   }
-/*
-   logout Func
-   */
-  logout(){
+  /*
+     logout Func
+     */
+  logout() {
     localStorage.clear();
-    this.router.navigate(['/'],{replaceUrl:true});
+    this.router.navigate(['/'], { replaceUrl: true });
   }
 }
 

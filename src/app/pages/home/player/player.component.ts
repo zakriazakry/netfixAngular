@@ -1,15 +1,17 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, HostListener, inject } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, HostListener, inject, ChangeDetectorRef} from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-player',
   standalone: true,
   imports: [NgIf],
   templateUrl: './player.component.html',
-  styleUrl: './player.component.scss'
+  styleUrls: ['./player.component.scss']
 })
-export class PlayerComponent {
+export class PlayerComponent implements AfterViewInit {
   @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
+  @ViewChild('progressBar') progressBarC!:any;
   videoUrl: string | null = null;
   title: string | null = null;
   controlsVisible = false;
@@ -17,13 +19,22 @@ export class PlayerComponent {
   watchedPercentage = 0;
   timeLeft = '00:00:00';
   isFullscreen = false;
-  router =inject(Router);
+  router = inject(Router);
+  elementRef = inject(ElementRef);
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,private cdr: ChangeDetectorRef) {}
+
+
 
   ngOnInit(): void {
-   this.videoUrl = history.state['url'];
-      this.title = history.state['title'];
+    this.videoUrl = history.state['url'];
+    this.title = history.state['title'];
+  }
+
+  ngAfterViewInit(): void {
+    this.videoRef.nativeElement.addEventListener('timeupdate', () => this.updateTime());
+    this.cdr.detectChanges();
+
   }
 
   displayControls() {
@@ -34,7 +45,6 @@ export class PlayerComponent {
     }
     this.controlsTimeout = setTimeout(() => {
       this.controlsVisible = false;
-      // document.body.style.cursor = 'none';
     }, 3000);
   }
 
@@ -48,11 +58,13 @@ export class PlayerComponent {
   }
 
   rewind() {
-    this.videoRef.nativeElement.currentTime -= 10;
+    const video = this.videoRef.nativeElement;
+    video.currentTime = Math.max(video.currentTime - 10, 0);
   }
 
   fastForward() {
-    this.videoRef.nativeElement.currentTime += 10;
+    const video = this.videoRef.nativeElement;
+    video.currentTime = Math.min(video.currentTime + 10, video.duration);
   }
 
   toggleMute() {
@@ -84,16 +96,20 @@ export class PlayerComponent {
   }
 
   seek(event: MouseEvent) {
+    const element = this.elementRef.nativeElement.querySelector('.progress-bar');
+    const width = element ? element.offsetWidth : 0;
     const progressBar = event.target as HTMLElement;
     const rect = progressBar.getBoundingClientRect();
     const offsetX = event.clientX - rect.left;
     const video = this.videoRef.nativeElement;
-    video.currentTime = (offsetX / rect.width) * video.duration;
+    console.log(width);
+    const newTime = (offsetX / width) * video.duration;
+    video.currentTime = newTime;
   }
 
   formatTime(seconds: number): string {
     const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor(Math.floor(seconds / 60)%60);
+    const minutes = Math.floor((seconds % 3600) / 60);
     const secs = Math.floor(seconds % 60);
     return `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(secs)}`;
   }
@@ -104,7 +120,6 @@ export class PlayerComponent {
 
   @HostListener('document:fullscreenchange', [])
   onFullScreenChange() {
-
     this.isFullscreen = !!document.fullscreenElement;
   }
 }
