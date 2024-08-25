@@ -4,6 +4,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PlayerComponent } from './pages/home/player/player.component';
 import { isAuthGuard, isNotAuthGuard } from './gards/auth.guard';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 export const routes: Routes = [
   {
     path: '',
@@ -13,6 +14,13 @@ export const routes: Routes = [
   {
     path: '',
     component: WelcomeComponent,
+  },
+  // admin
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    loadChildren: ()=> import("./pages/dashboard/dashboard.module").then(m=>m.DashboardModule),
+    canActivate:[isAuthGuard]
   },
   {
     path: 'home',
