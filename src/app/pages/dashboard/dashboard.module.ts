@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from '../home/home.module';
 import { RouterOutlet } from '@angular/router';
+import { AdminSideBarComponent } from "../../components/admin/adminSideBar/adminSideBar.component";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    RouterOutlet
-  ],
+    RouterOutlet,
+    AdminSideBarComponent,
+],
 })
 export class DashboardModule { }

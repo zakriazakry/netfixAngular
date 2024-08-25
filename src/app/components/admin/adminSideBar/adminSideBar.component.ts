@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-adminSideBar',
+  standalone:true,
+  imports:[],
   templateUrl: './adminSideBar.component.html',
   styleUrls: ['./adminSideBar.component.css']
 })
