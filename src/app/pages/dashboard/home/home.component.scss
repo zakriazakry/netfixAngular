@@ -1,5 +1,30 @@
-.home{
+.home {
   height: 100%;
-  background: green;
   width: 100%;
+
+  // headerPage
+  .headPage {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    // flex
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: grey;
+      i {
+        color: grey;
+        border: 1.5px solid grey;
+        padding: 7px;
+        border-radius: 100%;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        &:hover{
+          background: rgb(97, 97, 97);color: white;
+        }
+      }
+    }
+  }
 }

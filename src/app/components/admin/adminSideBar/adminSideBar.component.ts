@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   standalone:true,
   imports:[],
   templateUrl: './adminSideBar.component.html',
-  styleUrls: ['./adminSideBar.component.css']
+  styleUrls: ['./adminSideBar.component.scss']
 })
 export class AdminSideBarComponent implements OnInit {
 
