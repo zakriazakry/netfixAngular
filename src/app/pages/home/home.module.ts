@@ -14,6 +14,7 @@ import { ConvertToDatePipe } from '../../pipes/convert-to-date.pipe';
 import { MovieCardComponent } from "../../components/cards/movie-card/movie-card.component";
 import { AppBarComponent } from "../../components/main/app-bar/app-bar.component";
 import { FormsModule } from '@angular/forms';
+import { DashboardCardModule } from '../../components/cards/dashboardCard/dashboardCard.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     NavBarComponent,
     FormsModule,
     MovieCardComponent,
-    AppBarComponent
+    AppBarComponent,
+    DashboardCardModule
 ],
   exports: [
     HomeComponent,
