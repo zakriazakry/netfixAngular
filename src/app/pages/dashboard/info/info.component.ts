@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './info.component.scss'
 })
 export class InfoComponent {
-  items=[1,2,3.2,3,];
+  items=[1,2,3,4];
 }

@@ -40,7 +40,7 @@
   <!-- libs -->
   <section>
     <br>
-    <h1>Netfix Movies</h1>
+    <h1>Best Movies</h1>
     <div class="movies">
       <div (click)="goToMovive(item)" *ngFor="let item of list;let first = first" class="movie">
         <img [class.active] = "first" [src]="item.stream_icon " alt="">

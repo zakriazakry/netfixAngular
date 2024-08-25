@@ -8,7 +8,6 @@ import { AdminSideBarComponent } from "../../components/admin/adminSideBar/admin
 import { DashboardCardModule } from '../../components/cards/dashboardCard/dashboardCard.module';
 import { InfoComponent } from './info/info.component';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,

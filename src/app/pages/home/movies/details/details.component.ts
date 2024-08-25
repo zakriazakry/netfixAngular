@@ -98,6 +98,8 @@ export class DetailsComponent {
         title: this.movie?.tmdb?.original_title?.toLowerCase(),
       },
     });
-
+  }
+  openTrailer(){
+    window.open( "https://www.youtube.com/watch?v="+this.movie.info.youtube_trailer,"_blank");
   }
 }
