@@ -1,17 +1,55 @@
 <div class="home">
-  <div class="headPage">
-   <div>
-      <h2>Business OverView!</h2>
-   <br>
-   <p>Welcome Admin How Are You Today?</p>
-   </div>
-   <div class="icons">
-     <i class="fa-regular fa-comment"></i>
-     |
-     <i class="fa-solid fa-server"></i>
-   </div>
+  <!-- info -->
+  <div class="info">
+    <br />
+    <div class="headPage">
+      <div>
+        <h2>Business OverView!</h2>
+        <br />
+        <p>Welcome Admin How Are You Today?</p>
+      </div>
+      <div class="icons">
+        <i class="fa-regular fa-comment"></i>
+        |
+        <i class="fa-solid fa-server"></i>
+      </div>
+    </div>
+    <br />
+    <!-- dataOfApplication -->
+    <div class="data-applcation">
+      <app-dashboardCard *ngFor="let item of items">{{
+        item
+      }}</app-dashboardCard>
+    </div>
   </div>
-  <!-- dataOfApplication -->
-  <div class="data-applcation">
-    <app-dashboardCard *ngFor="let item of items">{{item}}</app-dashboardCard>
+  <!-- adminInfo -->
+  <div class="admin-info">
+    <!-- admin delails -->
+    <div class="admin-details">
+      <br />
+      <h3>Admin details</h3>
+      <br />
+      <div class="admin-logo-name">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+          alt=""
+        />
+        <div class="inf">
+          <h3>zakria nasser zekri</h3>
+          <p>{{ "xxxzekoxxx@gmail.com" }}</p>
+        </div>
+      </div>
+      <br />
+      <p>total New Users</p>
+      <div class="sps"></div>
+      <h2>4,2k</h2>
+      <div class="sps"></div>
+      <p>total New Movies</p>
+      <div class="sps"></div>
+      <h2>1,6k</h2>
+      <br />
+      <!-- admin delails -->
+      <button>Add New Movie</button>
+    </div>
   </div>
+</div>
