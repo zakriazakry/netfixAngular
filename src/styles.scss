@@ -125,3 +125,38 @@ body{
   animation: l32 1s infinite linear;
 }
 @keyframes l32 {to{transform: rotate(1turn)}}
+   // table
+   table {
+    border-spacing: 0px;
+    width: 100%;
+    thead {
+      background: rgb(36, 36, 36);
+      padding: 10px; /* px in lowercase */
+      th {
+        padding: 20px;
+        text-align: start;
+        border: none; /* Remove border */
+        font-weight: normal;
+      }
+    }
+    tbody {
+      tr {
+        cursor: pointer;
+        height: 50px;
+        transition: all 0.3s;
+        td {
+          text-align: start;
+          padding: 20px;
+          font-weight: normal;
+          border-bottom: 1px solid grey;
+          img {
+            width: 50px;
+            border-radius: 5px;
+          }
+        }
+        &:hover {
+          background-color: rgb(47, 47, 47);
+        }
+      }
+    }
+  }

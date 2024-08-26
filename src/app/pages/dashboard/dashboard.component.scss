@@ -8,6 +8,7 @@
   overflow: hidden;
   gap: 20px;
   .view {
+    animation: view 1s linear;
     border-radius: 20px;
     height: 100%;
     width: 100%;
@@ -15,8 +16,10 @@
     padding: 10px;
     flex-direction: column;
     justify-content: start;
+    overflow-y: scroll;
     background: linear-gradient(rgba(248, 248, 248, 0.133),rgba(0, 0, 0, 0.147));
     box-sizing: border-box;
   }
+
 }
 

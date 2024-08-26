@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   // info
-  .info{
+  .info {
     height: 100%;
     width: 74%;
     .headPage {
@@ -25,71 +25,86 @@
           border-radius: 100%;
           transition: all 0.3s ease;
           cursor: pointer;
-          &:hover{
-            background: rgb(97, 97, 97);color: white;
+          &:hover {
+            background: rgb(97, 97, 97);
+            color: white;
           }
         }
       }
     }
     // data
-    .data-applcation{
+    .data-applcation {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
       width: 100%;
       // justify-content: start;
     }
+ 
   }
-  // admin-info
- .admin-info{
-  height: 100%;
-  width: 25%;
-  h3{
-    font-size: 22px;
-    font-weight: 100;
-  }
-  .admin-details{
-    background: rgba(255, 255, 255, 0.046);
-    padding: 15px;
-    border-radius: 20px;
-    transition: all 0.3s;
-    .admin-logo-name{
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin: 10px 0;
-    
-      img{
-        width: 50px;
-        border-radius: 20%;
-      }
-      .inf{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
+  // admin info
+  .admin-info {
+    height: 100%;
+    width: 21%;
+    position: fixed;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    h3 {
+      font-size: 22px;
+      font-weight: 100;
     }
-    button{
-      background: red;
-      border: none;
-      border-radius: 10px;
-      width: 100%;
-      padding: 15px 10px;
-      font-size: 17px;
-      cursor: pointer;
+    .admin-details {
+      background: rgba(255, 255, 255, 0.046);
+      padding: 15px;
+      border-radius: 20px;
       transition: all 0.3s;
-      &:hover{
-      background: rgb(219, 87, 87);
+      .admin-logo-name {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin: 10px 0;
 
+        img {
+          width: 50px;
+          border-radius: 20%;
+        }
+        .inf {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+      button {
+        background: red;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        padding: 15px 10px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          background: rgb(238, 9, 9);
+        }
       }
     }
+    .char-users {
+      background: rgba(255, 255, 255, 0.105);
+      border-radius: 10px;
+      padding: 20px;
+    }
   }
- }
- p{
-  color: grey;
-  font-size: 12px;
+  p {
+    color: grey;
+    font-size: 12px;
+  }
 }
-}
-.sps{
+.sps {
   height: 10px;
+}
+
+.demo-chart {
+  height: 400px;
 }

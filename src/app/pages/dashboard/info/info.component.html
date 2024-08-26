@@ -21,6 +21,35 @@
         item
       }}</app-dashboardCard>
     </div>
+    <!-- chart line -->
+     <br>
+     <h3 style="color: rgb(207, 207, 207);">
+      <i style="color: rgb(207, 207, 207);" class="fa-solid fa-chart-line"></i>
+      System Options</h3>
+    <div echarts #myChart [options]="lineOption" style="width: 100%;"></div>
+      <!-- Last users Table -->
+      <h3>Last {{lastUsers.length}} users</h3>
+      <br>
+       <table >
+        <thead >
+          <tr>
+            <th>#ID</th>
+            <th>image</th>
+            <th>name</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of lastUsers;let i=index;">
+            <td>#{{i+1}}</td>
+            <td ><img [src]="user.image" alt=""></td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+          </tr>
+        </tbody>
+       </table>
   </div>
   <!-- adminInfo -->
   <div class="admin-info">
@@ -51,17 +80,12 @@
       <!-- admin delails -->
       <button>Add New Movie</button>
     </div>
-    <div class="char-users">
-      <div id="chart">
-        <!-- <apx-chart
-          [series]="chartOptions.series"
-          [chart]="chartOptions.chart"
-          [labels]="chartOptions.labels"
-          [responsive]="chartOptions.responsive"
-        ></apx-chart> -->
-        <!-- <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart> -->
-      </div>
-      
+    <div  class="char-users">
+      <h3 style="color: rgb(252, 76, 76);"> <i style="color: rgb(252, 76, 76);" class="fa-solid fa-chart-simple"></i> Business analytics</h3>
+      <div echarts #myChart [options]="chartOption" class="demo-chart"></div>
+      <p>
+        <i class="fa-brands fa-redhat" style="margin: 0 10px;font-size: 20px;" aria-hidden="true"></i>
+        Netfilx dashboard Power By zeko</p>
     </div>
   </div>
 </div>

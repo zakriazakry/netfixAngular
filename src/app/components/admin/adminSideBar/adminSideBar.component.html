@@ -1,23 +1,23 @@
 <div class="side-bar">
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="">
     <ul>
-        <li class="active">
+        <li  [routerLink]="['home']" [routerLinkActive]="'active'">
             <i class="fa-solid fa-chart-simple"></i>
             Dashboard
         </li>
-        <li>
+        <li  [routerLink]="['users']" [routerLinkActive]="'active'">
             <i class="fa-solid fa-users"></i>
             Users
         </li>
-        <li>
+        <li [routerLink]="['subscriptions']" [routerLinkActive]="'active'">
             <i class="fa-solid fa-coins"></i>
             Subscriptions
         </li>
-        <li>
+        <li  [routerLink]="['movies']" [routerLinkActive]="'active'">
             <i class="fa-solid fa-film"></i>
             Movies
         </li>
-        <li>
+        <li [routerLink]="['settings']" [routerLinkActive]="'active'">
             <i class="fa-solid fa-sliders"></i>
             Settings
         </li>

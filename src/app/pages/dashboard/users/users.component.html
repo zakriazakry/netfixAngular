@@ -1,0 +1,43 @@
+<div class="user">
+  <div class="info">
+    <h1>users</h1>
+    <br>
+    <p>List of Users in web site</p>
+  </div>
+  <br>
+  <div class="conterller">
+    <div class="search">
+      <input type="text">
+      <button>بحث</button>
+    </div>
+  </div>
+  <br>
+  <table >
+    <thead >
+      <tr>
+        <th>#ID</th>
+        <th>image</th>
+        <th>name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Plan</th>
+        <th>IP</th>
+        <th>last_login</th>
+        <th>createad_at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users;let i=index;">
+        <td>#{{i+1}}</td>
+        <td ><img [src]="user.image" alt=""></td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.plan}}</td>
+        <td>{{user.ip}}</td>
+        <td>{{user.last_login | date}}</td>
+        <td>{{user.created_at | date}}</td>
+      </tr>
+    </tbody>
+   </table>
+</div>
