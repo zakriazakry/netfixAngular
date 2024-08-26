@@ -1,5 +1,6 @@
 <div class="user">
   <div class="info">
+    <br>
     <h1>users</h1>
     <br>
     <p>List of Users in web site</p>
@@ -7,9 +8,12 @@
   <br>
   <div class="conterller">
     <div class="search">
-      <input type="text">
-      <button>بحث</button>
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="search user">
     </div>
+    <button>
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      مستخدم جديد</button>
   </div>
   <br>
   <table >
@@ -24,6 +28,7 @@
         <th>IP</th>
         <th>last_login</th>
         <th>createad_at</th>
+        <th>option</th>
       </tr>
     </thead>
     <tbody>
@@ -37,6 +42,11 @@
         <td>{{user.ip}}</td>
         <td>{{user.last_login | date}}</td>
         <td>{{user.created_at | date}}</td>
+        <td class="options">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <i class="fa-solid fa-trash"></i>
+          <i class="fa-regular fa-pen-to-square"></i>
+        </td>
       </tr>
     </tbody>
    </table>

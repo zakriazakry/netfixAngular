@@ -1,4 +1,68 @@
-.user{
+.user {
   animation: view 0.1s linear;
   width: 100%;
+  p {
+    color: grey;
+  }
+  .conterller {
+    width: 100%;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .search {
+      padding: 6px 10px;
+      color: red;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      input {
+        width: 300px;
+        color: white;
+        background: rgba(0, 0, 0, 0.381);
+        border: none;
+        font-size: 15px;
+        padding: 15px 20px;
+        border-radius: 5px;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    button {
+      background: white;
+      padding: 8px 25px;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.777);
+      }
+      i {
+        margin-right: 10px;
+        color: black;
+      }
+    }
+  }
+}
+// tabls
+.options{
+  i{
+    margin:  5px;
+    padding:  8px;
+    border: 1.5px solid grey;
+    color: grey;
+    border-radius: 6px;
+    transition: all 0.3s ;
+    &:hover{
+      transform: translateY(-3px);
+      color: white;
+      background: grey;
+    }
+  }
 }
