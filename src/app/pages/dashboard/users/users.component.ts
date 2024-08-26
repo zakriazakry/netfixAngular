@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  MatDialog,MatDialogActions,MatDialogClose,MatDialogContent,
+  MatDialogModule,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog'
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -63,5 +68,25 @@ export class UsersComponent {
       created_at: "2023-09-11 14:22:00"
     },
   ];
+  readonly dialog = inject(MatDialog);
 
+  openDialog() {
+    this.dialog.open(DialogElementsExampleDialog);
+  }
 }
+
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  template: `
+  <h2 mat-dialog-title>Dialog with elements</h2>
+<mat-dialog-content>This dialog showcases the title, close, content and actions elements.</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
+`,
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DialogElementsExampleDialog {}

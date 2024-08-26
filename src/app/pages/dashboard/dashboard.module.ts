@@ -13,6 +13,8 @@ import { UsersComponent } from './users/users.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MoviesComponent } from './movies/movies.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
     CommonModule,
     DashboardRoutingModule,
     RouterOutlet,
-    AdminSideBarComponent,
+    AdminSideBarComponent,MatButtonModule,
+    MatSlideToggleModule,
     DashboardCardModule,
     NgxEchartsModule.forRoot({ echarts }),
 ],

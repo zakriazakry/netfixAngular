@@ -1,0 +1,82 @@
+.user-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  p {
+    color: grey;
+  }
+  .user-info {
+    // width: 100%;
+    display: flex;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1),
+      rgba(0, 0, 0, 0)
+    );
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    img {
+      margin: 0 20px;
+      width: 250px;
+      border-radius: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover {
+        scale: 1.05;
+      }
+    }
+    .btn {
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      button {
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+        transition: all 0.2s;
+        margin: 0 5px;
+        &:nth-child(1) {
+          background: rgb(12, 189, 35);
+        }
+        &:nth-child(2) {
+          background: rgb(251, 0, 0);
+        }
+        &:hover {
+          opacity: 0.8;
+          scale: 1.07;
+        }
+      }
+    }
+  }
+
+  // userEdit
+  .userEdit {
+    .tab-bar {
+      width: 100%;
+      display: flex;
+      gap: 30px;
+      p {
+        color: white;
+        border-bottom: 3px solid transparent;
+        // border: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+        &:hover,
+        &.active {
+          border-bottom: 3px solid red;
+        }
+      }
+      i{
+        margin: 0  10px 0 0 ;
+      }
+    }
+  }
+}
+.sps {
+  height: 5px;
+}
