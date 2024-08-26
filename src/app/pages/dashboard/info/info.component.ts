@@ -90,7 +90,6 @@ export class InfoComponent implements AfterViewInit {
   }
   // chart lines
   // lineOption: EChartsOption = {
-
   // };
   lineOption: EChartsOption = {
     xAxis: {

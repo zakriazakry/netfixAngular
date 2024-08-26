@@ -11,9 +11,12 @@
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" placeholder="search user">
     </div>
-    <button>
-      <i class="fa fa-plus" aria-hidden="true"></i>
-      مستخدم جديد</button>
+      <div class="btns">
+        <button>
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          مستخدم جديد</button>
+
+        </div>
   </div>
   <br>
   <table >
@@ -32,6 +35,7 @@
       </tr>
     </thead>
     <tbody>
+      @if ( 3==3){}
       <tr *ngFor="let user of users;let i=index;">
         <td>#{{i+1}}</td>
         <td ><img [src]="user.image" alt=""></td>
@@ -50,4 +54,9 @@
       </tr>
     </tbody>
    </table>
+
+   <div class="pagnation">
+    <i class="fa-solid fa-chevron-left"></i>
+    <i class="fa-solid fa-chevron-right"></i>
+   </div>
 </div>
