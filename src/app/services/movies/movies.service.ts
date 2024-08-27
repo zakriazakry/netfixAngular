@@ -5,6 +5,7 @@ import { Observable, forkJoin, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Movie } from '../../interfaces/movies.interface';
 import { environment } from '../../../environments/environment.development';
+import { Router } from '@angular/router';
 
 
 
@@ -19,7 +20,10 @@ export class MoviesService {
   private fake_base_url : string= "/assets/database.json";
   private real_base_url : string=  `https://xvip.pro/player_api.php?username=${this.userName}&password=${this.password}`;
   // private base_url: string = this.fake_base_url;
-  constructor() {}
+  constructor(
+private router:Router
+
+  ) {}
 
   getData(page?:number): Observable<any> {
     // return this.http.get(`${this.real_base_url}&action=get_vod_streams`);

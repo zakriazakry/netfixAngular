@@ -28,7 +28,6 @@ export class DetailsComponent {
   playMainMovieUrl = '';
   userName = environment.username;
   password = environment.password;
-
   pages = [
     {
       component: OverviewComponent,
@@ -63,12 +62,19 @@ export class DetailsComponent {
     this.isloading = true;
     this.movieService.getMovieInfoById(id).subscribe({
       next: (res) => {
+        if (!res.info ||
+          !res.movie_data ||
+          res.tmdb === undefined) {
+          this.router.navigate(["/"]);
+        }
         this.movie = res;
         this.isloading = false;
         this.playMainMovieUrl = this.getVideoUrl();
+
       },
       error: (err) => {
         console.error('Error fetching movie details:', err);
+
         this.isloading = false;
       },
     });
@@ -99,7 +105,7 @@ export class DetailsComponent {
       },
     });
   }
-  openTrailer(){
-    window.open( "https://www.youtube.com/watch?v="+this.movie.info.youtube_trailer,"_blank");
+  openTrailer() {
+    window.open("https://www.youtube.com/watch?v=" + this.movie.info.youtube_trailer, "_blank");
   }
 }
