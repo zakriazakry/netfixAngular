@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgComponentOutlet } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
@@ -15,6 +15,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
+import { MainUserDetailsComponent } from './users/user-details/main-user-details/main-user-details.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatButtonModule} from '@angular/material/button';
     DashboardRoutingModule,
     RouterOutlet,
     AdminSideBarComponent,MatButtonModule,
-    MatSlideToggleModule,
+    MatSlideToggleModule,MainUserDetailsComponent,
+    NgComponentOutlet,
     DashboardCardModule,
     NgxEchartsModule.forRoot({ echarts }),
 ],
