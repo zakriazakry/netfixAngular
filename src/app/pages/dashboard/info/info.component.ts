@@ -46,7 +46,6 @@ export class InfoComponent implements AfterViewInit {
   ];
   //
   // chart pie
-  @ViewChild('myChart', { static: true }) myChartRef!: ElementRef;
   @ViewChild('myLines', { static: true }) myLinesRef!: ElementRef;
   private chartInstance!: echarts.ECharts;
   private linesInstance!: echarts.ECharts;
@@ -54,16 +53,16 @@ export class InfoComponent implements AfterViewInit {
     series: [
       {
         type: 'pie',
-        radius: [0, '70%'],
+        radius: [0, '50%'],
         color: ['#c23531',
           '#2f4554',
-          '#61a0a8',],
+          '#61a0a8'],
         data: [
           { value: 335, name: 'Direct Visit', },
           { value: 234, name: 'Union Ad' },
           { value: 1548, name: 'Search Engine' }
         ],
-      }
+      },
     ]
   };
   lineOption: EChartsOption = {
@@ -83,26 +82,18 @@ export class InfoComponent implements AfterViewInit {
         type: 'bar',
         data: [26, 24, 18, 22, 23, 20, 27]
       }
-    ]
+    ], color: ['#c23531',
+      '#2f4554',
+      '#61a0a8',], textStyle: { color: "red", fontWeight: "bold", fontSize: "15px" }
+
   };
   ngAfterViewInit() {
-    this.chartInstance = echarts.init(this.myChartRef.nativeElement);
-    this.chartInstance.setOption(this.chartOption);
 
     this.linesInstance = echarts.init(this.myLinesRef.nativeElement);
     this.linesInstance.setOption(this.lineOption);
 
     setInterval(() => {
-      this.chartInstance.setOption({
-        series: [
-          {
-            data: this.makeRandomData()
-          }
-        ],
-        color: ['#c23531',
-          '#2f4554',
-          '#61a0a8',], textStyle: { color: "red", fontWeight: "bold", fontSize: "15px" }
-      });
+
       this.linesInstance.setOption({
         series: [
           {
@@ -117,7 +108,7 @@ export class InfoComponent implements AfterViewInit {
   }
   makeRandomData() {
     return [
-      { value: Math.random() * 1000, name: 'Users' },
+      { value: Math.random() * 1000, name: 'Users', },
       { value: Math.random() * 1000, name: 'Movies' },
       { value: Math.random() * 1000, name: 'budget' }
     ];

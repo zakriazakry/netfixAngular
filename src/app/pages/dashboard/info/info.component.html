@@ -80,12 +80,21 @@
       <!-- admin delails -->
       <button>Add New Movie</button>
     </div>
-    <div  class="char-users">
-      <h3 style="color: rgb(252, 76, 76);"> <i style="color: rgb(252, 76, 76);" class="fa-solid fa-chart-simple"></i> Business analytics</h3>
-      <div echarts #myChart [options]="chartOption" class="demo-chart"></div>
-      <p>
-        <i class="fa-brands fa-redhat" style="margin: 0 10px;font-size: 20px;" aria-hidden="true"></i>
-        Netfilx dashboard Power By zeko</p>
+    <div  class="last-transactions">
+      <h3 >
+        <i class="fa-solid fa-chart-simple"></i>
+
+        Last Transactions</h3>
+      <div  *ngFor="let item of [1,2,3,4,5];track item ;let e = even; let last = last" [style.borderBottom]="last ?'none' :''" class="transactionElement">
+        <h4>
+          @if(e){
+            <i style="color: greenyellow;" class="fa-solid fa-square-plus"></i>
+          }@else {
+            <i style="color: red;" class="fa-solid fa-square-minus"></i>
+          }
+          New subscription | #12315</h4>
+        <p>new subscription price 30$ of month </p>
+      </div>
     </div>
   </div>
 </div>
