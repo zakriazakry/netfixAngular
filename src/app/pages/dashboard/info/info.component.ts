@@ -47,7 +47,9 @@ export class InfoComponent implements AfterViewInit {
   //
   // chart pie
   @ViewChild('myChart', { static: true }) myChartRef!: ElementRef;
+  @ViewChild('myLines', { static: true }) myLinesRef!: ElementRef;
   private chartInstance!: echarts.ECharts;
+  private linesInstance!: echarts.ECharts;
   chartOption: EChartsOption = {
     series: [
       {
@@ -64,33 +66,6 @@ export class InfoComponent implements AfterViewInit {
       }
     ]
   };
-  ngAfterViewInit() {
-    this.chartInstance = echarts.init(this.myChartRef.nativeElement);
-    this.chartInstance.setOption(this.chartOption);
-
-    setInterval(() => {
-      this.chartInstance.setOption({
-        series: [
-          {
-            data: this.makeRandomData()
-          }
-        ],
-        color: ['#c23531',
-          '#2f4554',
-          '#61a0a8',], textStyle: { color: "red", fontWeight: "bold", fontSize: "15px" }
-      });
-    }, 2000);
-  }
-  makeRandomData() {
-    return [
-      { value: Math.random() * 1000, name: 'Users' },
-      { value: Math.random() * 1000, name: 'Movies' },
-      { value: Math.random() * 1000, name: 'budget' }
-    ];
-  }
-  // chart lines
-  // lineOption: EChartsOption = {
-  // };
   lineOption: EChartsOption = {
     xAxis: {
       type: 'category',
@@ -110,4 +85,45 @@ export class InfoComponent implements AfterViewInit {
       }
     ]
   };
+  ngAfterViewInit() {
+    this.chartInstance = echarts.init(this.myChartRef.nativeElement);
+    this.chartInstance.setOption(this.chartOption);
+
+    this.linesInstance = echarts.init(this.myLinesRef.nativeElement);
+    this.linesInstance.setOption(this.lineOption);
+
+    setInterval(() => {
+      this.chartInstance.setOption({
+        series: [
+          {
+            data: this.makeRandomData()
+          }
+        ],
+        color: ['#c23531',
+          '#2f4554',
+          '#61a0a8',], textStyle: { color: "red", fontWeight: "bold", fontSize: "15px" }
+      });
+      this.linesInstance.setOption({
+        series: [
+          {
+            data: this.makeRandomData()
+          }
+        ],
+        color: ['#c23531',
+          '#2f4554',
+          '#61a0a8',], textStyle: { color: "red", fontWeight: "bold", fontSize: "15px" }
+      })
+    }, 2000);
+  }
+  makeRandomData() {
+    return [
+      { value: Math.random() * 1000, name: 'Users' },
+      { value: Math.random() * 1000, name: 'Movies' },
+      { value: Math.random() * 1000, name: 'budget' }
+    ];
+  }
+  // chart lines
+  // lineOption: EChartsOption = {
+  // };
+
 }
