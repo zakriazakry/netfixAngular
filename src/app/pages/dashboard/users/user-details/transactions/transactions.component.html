@@ -1,1 +1,64 @@
-<p>transactions works!</p>
+<div class="main">
+  <!-- list of transactions -->
+
+  <div class="listBody">
+    <h2>List of Transaction</h2>
+    <p>Big Than 20 Transaction</p>
+    <br />
+    <div class="list">
+      <div
+        *ngFor="let item of [1, 4]; let lst = last; let fi = first"
+        class="item"
+        [class.active]="fi"
+        [style.borderBottom]="lst ? 'none' : ''"
+      >
+        <h3>transaction #1233</h3>
+        <p>new subscriptions ofsubscriptions ofsubscriptions of</p>
+        <br>
+        <p >
+          <i style="color: grey;" class="fa-regular fa-clock"></i>
+          2024-1-1 12:12:12 AM</p>
+      </div>
+    </div>
+    <div class="Pagenation">
+      <i class="fa-solid fa-chevron-left"></i>
+      <i class="fa-solid fa-chevron-right"></i>
+    </div>
+  </div>
+  <!-- details -->
+  <div class="details">
+    <h2>transaction #1233</h2>
+    <br />
+    <p>description</p>
+    <h4>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. At accusamus,
+      maxime voluptates eligendi veniam illum in illo fugit iste hic inventore
+      atque perspiciatis facilis eum, esse placeat modi, qui unde.
+    </h4>
+    <p>Price</p>
+    <app-animated-counter
+      [value]="95"
+      [duration]="1000"
+      [stepTime]="50"
+    ></app-animated-counter>{{" LYD"}}
+
+    <p>Cost</p>
+    <app-animated-counter
+      [value]="45"
+      [duration]="1000"
+      [stepTime]="50"
+    ></app-animated-counter>{{" LYD"}}
+
+    <p>Profit</p>
+    <app-animated-counter
+      [value]="50"
+      [duration]="1000"
+      [stepTime]="50"
+    ></app-animated-counter>{{" LYD"}}
+    <!-- Time -->
+     <br><br>
+     <h3 style="color: grey;">
+      <i style="color: grey;" class="fa-regular fa-clock"></i>
+      2024-1-1 12:12:12 AM</h3>
+  </div>
+</div>

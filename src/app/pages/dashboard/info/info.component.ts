@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { EChartsOption } from 'echarts';
 import * as echarts from 'echarts';
 

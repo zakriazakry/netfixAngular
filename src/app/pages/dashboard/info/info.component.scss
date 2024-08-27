@@ -94,13 +94,21 @@
       padding: 20px;
       box-sizing: border-box;
       .transactionElement {
-        padding: 10px 10px;
+        padding: 20px 10px;
         h4 {
           font-weight: normal;
           margin: 0 0 3px 0;
         }
         border-bottom: 1px solid grey;
-        
+        cursor: pointer;
+        transition: 0.3s;
+        i{
+          font-size: 24px;
+          margin: 0 10px;
+        }
+        &:hover{
+          background: #3b3b3b;
+        }
       }
     }
   }
