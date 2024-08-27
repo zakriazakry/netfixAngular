@@ -1,17 +1,16 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, inject, Input, Output, output } from '@angular/core';
 import {
-  MatDialog,MatDialogActions,MatDialogClose,MatDialogContent,
-  MatDialogModule,
-  MatDialogRef,
-  MatDialogTitle,
+  MatDialog
 } from '@angular/material/dialog'
+import { DialogElementsExampleDialog } from '../../../components/dialog/confirm-dialog/confirm-dialog.component';
+import { DialogSubscriptionComponent } from '../../../components/dialog/dialog-subscription/dialog-subscription.component';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
 export class UsersComponent {
-   users = [
+  users = [
     {
       id: 1,
       image: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
@@ -70,23 +69,32 @@ export class UsersComponent {
   ];
   readonly dialog = inject(MatDialog);
 
-  openDialog() {
-    this.dialog.open(DialogElementsExampleDialog);
+  deleteDialog() {
+    const dialogRef = this.dialog.open(DialogElementsExampleDialog, {
+      data: {
+        title: 'Do You Need!',
+        docs: 'Do you need to delete the user?'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'deleted') {
+        console.log('تم حذف المستخدم.');
+      }
+    });
+  }
+  subscript(){
+    const dialogRef = this.dialog.open(DialogSubscriptionComponent, {
+      data: {
+        title: 'Do You Need!',
+        docs: 'Do you need سسسس delete the user?'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'deleted') {
+        console.log('تم حذف المستخدم.');
+      }
+    });
   }
 }
-
-
-@Component({
-  selector: 'dialog-elements-example-dialog',
-  template: `
-  <h2 mat-dialog-title>Dialog with elements</h2>
-<mat-dialog-content>This dialog showcases the title, close, content and actions elements.</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</mat-dialog-actions>
-`,
-  standalone: true,
-  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class DialogElementsExampleDialog {}
