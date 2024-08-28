@@ -42,11 +42,11 @@
           {{movie.rating_5based}}</td>
         <td>{{movie.stream_id}}</td>
         <td>{{movie.category_id}}</td>
-        <td>{{"2024-1-1"}}</td>
+        <td>{{movie.added | date}}</td>
         <td class="options">
           <i class="fa-solid fa-cloud"></i>
           <i  class="fa-solid fa-trash"></i>
-          <i routerLink="1" class="fa-regular fa-pen-to-square"></i>
+          <i [routerLink]="[movie.stream_id]" class="fa-regular fa-pen-to-square"></i>
         </td>
       </tr>
     </tbody>

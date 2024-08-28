@@ -1,1 +1,119 @@
-<p>moviedetails.dh works!</p>
+<div *ngIf="!isloading" class="main">
+  <div class="movie">
+    <!-- poster -->
+    <img
+      [src]="movie.info.movie_image"
+      alt=""
+    />
+    <!-- content -->
+    <div class="content">
+      <p>The Movie #{{movie.movie_data.stream_id}}</p>
+      <h2>{{movie.movie_data.name}}</h2>
+      <p>
+        {{movie.tmdb?.overview}}
+      </p>
+      <h4>The Category : <span>Action</span></h4>
+      <h4>release At : <span>{{movie.tmdb?.release_date}}</span></h4>
+      <h4>Time : <span>{{movie.info.duration}}</span></h4>
+      <h4>Original Language : <span>{{movie.tmdb!.spoken_languages[0].english_name}}</span></h4>
+      <div class="btns">
+        <button>Play Movie</button>
+        <button>Update Movies Url</button>
+        <button>Add subtitle</button>
+        <button>Add Audio Track</button>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <h2>Movie Information</h2>
+    <br />
+    <p>
+      <i
+        style="color: grey; margin-right: 6px"
+        class="fa-solid fa-database"
+      ></i>
+      TMDB Data
+    </p>
+    <br />
+    <table class="table table-light">
+      <thead class="thead-light">
+        <tr>
+          <th>Key</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Title</td>
+          <td>{{ movie.tmdb!.title }}</td>
+        </tr>
+        <tr>
+          <td>Overview</td>
+          <td>{{ movie.tmdb!.overview }}</td>
+        </tr>
+        <tr>
+          <td>Original Language</td>
+          <td>{{ movie.tmdb!.original_language }}</td>
+        </tr>
+        <tr>
+          <td>Release Date</td>
+          <td>{{ movie.tmdb!.release_date }}</td>
+        </tr>
+        <tr>
+          <td>Runtime</td>
+          <td>{{ movie.tmdb!.runtime }} minutes</td>
+        </tr>
+        <tr>
+          <td>Genres</td>
+          <td>
+            <ul>
+              <li *ngFor="let genre of movie.tmdb!.genres">{{ genre.name }}</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Production Companies</td>
+          <td>
+            <ul>
+              <li *ngFor="let company of movie.tmdb!.production_companies">
+                {{ company.name }} ({{ company.origin_country }})
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Spoken Languages</td>
+          <td>
+            <ul>
+              <li *ngFor="let language of movie.tmdb!.spoken_languages">
+                {{ language.english_name }} ({{ language.iso_639_1 }})
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Vote Average</td>
+          <td>
+            <i style="color: greenyellow" class="fa-solid fa-star"></i>
+            {{ movie.tmdb!.vote_average }}
+          </td>
+        </tr>
+        <tr>
+          <td>Vote Count</td>
+          <td>{{ movie.tmdb!.vote_count }}</td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td>{{ movie.tmdb?.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<!-- loading -->
+@if(isloading){
+  <div class="loading">
+    <div class="loader"></div>
+  </div>
+}

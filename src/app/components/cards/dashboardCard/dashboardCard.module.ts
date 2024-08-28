@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardCardComponent } from './dashboardCard.component';
+import { AnimatedCounterComponent } from "../../admin/counter/counter.component";
 
 @NgModule({
   imports: [
-    CommonModule
-  ],
+    CommonModule,
+    AnimatedCounterComponent
+],
   declarations: [DashboardCardComponent],
   exports:[
     DashboardCardComponent
