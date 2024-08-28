@@ -16,6 +16,7 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import { MainUserDetailsComponent } from './users/user-details/main-user-details/main-user-details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MainUserDetailsComponent } from './users/user-details/main-user-details
     AdminSideBarComponent,MatButtonModule,
     MatSlideToggleModule,MainUserDetailsComponent,
     NgComponentOutlet,
+    FormsModule,
     DashboardCardModule,
     NgxEchartsModule.forRoot({ echarts }),
 ],
