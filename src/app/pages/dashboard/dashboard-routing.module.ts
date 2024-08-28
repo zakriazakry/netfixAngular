@@ -5,6 +5,7 @@ import { UsersComponent } from './users/users.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MoviesComponent } from './movies/movies.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { MoviedetailsDhComponent } from './movies/moviedetails.dh/moviedetails.dh.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,18 @@ const routes: Routes = [
   },
   {
     path: "movies",
-    component: MoviesComponent,
+    children:[
+      {
+        path:"",
+        pathMatch:"full",
+        component: MoviesComponent,
+      },
+      {
+        path:":id",
+        pathMatch:"full",
+        component: MoviedetailsDhComponent,
+      }
+    ]
   }
 ];
 
