@@ -5,6 +5,7 @@ import { apiRes } from '../../interfaces/apiRes.interface';
 import { environment } from '../../../environments/environment.development';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { EncryptionService } from '../encryption.service';
 
 
 
@@ -15,7 +16,9 @@ import { Router } from '@angular/router';
 export class AuthService {
   http = inject(HttpClient);
   router = inject(Router);
-  constructor() {
+  constructor(
+    private encryptionService: EncryptionService
+  ) {
 
   }
   isAuth(): boolean {
@@ -36,8 +39,11 @@ export class AuthService {
         "email": email,
         "password": password
       }).subscribe({
-        next(value: apiRes) {
-          localStorage.setItem('token', value.msg!)
+        next:async (value: apiRes)=> {
+          const encryptedToken = await this.encryptionService.encrypt(value.msg!);
+          console.log(value.msg);
+          console.log( this.encryptionService.encrypt(value.msg!));
+          localStorage.setItem('token', encryptedToken!)
           resolve(value);
         },
         error(err) {
