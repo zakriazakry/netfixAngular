@@ -41,9 +41,8 @@ export class AuthService {
       }).subscribe({
         next:async (value: apiRes)=> {
           const encryptedToken = await this.encryptionService.encrypt(value.msg!);
-          console.log(value.msg);
-          console.log( this.encryptionService.encrypt(value.msg!));
           localStorage.setItem('token', encryptedToken!)
+          console.log(value);
           resolve(value);
         },
         error(err) {
