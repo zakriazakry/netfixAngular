@@ -1,0 +1,29 @@
+<div class="main">
+  <br />
+  <h2>
+    <i class="fa-solid fa-shield"></i>
+    User Role</h2>
+  <p>
+    The user role is the permissions to access, view and all options on this Web
+    Site.
+  </p>
+  <br />
+  <!-- <mat-divider> </mat-divider> -->
+  <br />
+  <div class="roleContianer">
+    <div class="role" *ngFor="let item of allRole">
+      <!-- <p>#{{item.roleID}}</p> -->
+      <div class="content">
+        <h3>
+          {{item.roleName}}
+        </h3>
+        <p> {{item.roleDescrption}}</p>
+      </div>
+      <mat-slide-toggle
+        (change)="clgs($event.checked)"
+        labelPosition="before"
+      ></mat-slide-toggle>
+    </div>
+  </div>
+    <button>Save</button>
+</div>

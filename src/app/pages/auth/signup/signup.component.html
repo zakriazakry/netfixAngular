@@ -35,8 +35,16 @@
         [ngModelOptions]="{ standalone: true }"
         name="email"
         required
-        placeholder="Email or mobile number"
+        placeholder="Email Address"
       />
+      <input
+      type="phone"
+      [(ngModel)]="userInputs.phone"
+      [ngModelOptions]="{ standalone: true }"
+      name="phone"
+      required
+      placeholder="Mobile number"
+    />
       <input
         type="password"
         [(ngModel)]="userInputs.password"

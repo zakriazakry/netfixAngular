@@ -23,6 +23,7 @@ export class SignupComponent {
   userInputs = {
     first_name: '',
     last_name: '',
+    phone: '',
     email: '',
     password: '',
   };
