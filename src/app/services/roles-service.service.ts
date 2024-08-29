@@ -19,7 +19,7 @@ export class RolesService {
       'Authorization': 'Bearer 3|EKtAxhYNVAGtskJHtqYATftmSv4THyK10ypN26Rz512df8c7'
     });
   }
-
+ 
   getAllRoles(): Observable<any> {
     return this.http.get(`${environment.baseUrl}roles/getRole`, { headers: this.headers });
   }
