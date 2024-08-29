@@ -1,6 +1,7 @@
 export interface UserRole {
-  roleID: number;
-  roleName: string;
-  roleDescrption: string | undefined;
-  ext: any[];
+  id: number;
+  name: string;
+  description: string | undefined;
+  ext: string;
+  active : boolean;
 }
