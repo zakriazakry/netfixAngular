@@ -4,6 +4,9 @@ import {
 } from '@angular/material/dialog'
 import { DialogElementsExampleDialog } from '../../../components/dialog/confirm-dialog/confirm-dialog.component';
 import { DialogSubscriptionComponent } from '../../../components/dialog/dialog-subscription/dialog-subscription.component';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment.development';
+import { appHttpHeader } from '../../../shared/httpheader';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -68,7 +71,7 @@ export class UsersComponent {
     },
   ];
   readonly dialog = inject(MatDialog);
-
+  isloading :boolean = false;
   deleteDialog() {
     const dialogRef = this.dialog.open(DialogElementsExampleDialog, {
       data: {
@@ -95,6 +98,16 @@ export class UsersComponent {
       if (result === 'deleted') {
         console.log('تم حذف المستخدم.');
       }
+    });
+  }
+  http = inject(HttpClient);
+  constructor(){
+    this.isloading = true;
+    this.http.get(environment.baseUrl+'user/getUsers',{
+      headers : appHttpHeader
+    }).subscribe((res : any) =>{
+      this.users = res;
+      this.isloading = false;
     });
   }
 }

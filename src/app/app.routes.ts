@@ -5,6 +5,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { PlayerComponent } from './pages/home/player/player.component';
 import { isAuthGuard, isNotAuthGuard } from './gards/auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { roleGuard } from './gards/role.guard';
+import { Roles } from './shared/role';
 export const routes: Routes = [
   {
     path: '',
@@ -20,7 +22,10 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     loadChildren: ()=> import("./pages/dashboard/dashboard.module").then(m=>m.DashboardModule),
-    canActivate:[isAuthGuard]
+    canActivate:[isAuthGuard,roleGuard],
+    data:{
+      'roles' : <number[]>[Roles.admin,Roles.contentManager]
+    }
   },
   {
     path: 'home',

@@ -1,4 +1,4 @@
-<div class="user">
+<div *ngIf="!isloading" class="user">
   <div class="info">
     <br>
     <h1>users</h1>
@@ -49,7 +49,7 @@
         <td class="options">
           <i (click)="subscript()" class="fa-solid fa-cart-shopping"></i>
           <i (click)="deleteDialog()" class="fa-solid fa-trash"></i>
-          <i routerLink="1" class="fa-regular fa-pen-to-square"></i>
+          <i [routerLink]="user.id.toString()" class="fa-regular fa-pen-to-square"></i>
         </td>
       </tr>
     </tbody>
@@ -59,4 +59,8 @@
     <i class="fa-solid fa-chevron-left"></i>
     <i class="fa-solid fa-chevron-right"></i>
    </div>
+</div>
+
+<div *ngIf="isloading" class="loading" style="height: 80vh;">
+<div class="loader"></div>
 </div>

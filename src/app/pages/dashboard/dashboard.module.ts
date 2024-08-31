@@ -17,6 +17,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import { MainUserDetailsComponent } from './users/user-details/main-user-details/main-user-details.component';
 import { FormsModule } from '@angular/forms';
+import { NbThemeModule, NbToastrModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     DashboardCardModule,
     NgxEchartsModule.forRoot({ echarts }),
+    NbThemeModule.forRoot({ name: 'dark' }),
+    NbToastrModule.forRoot(), // Import here
 ],
 })
 export class DashboardModule { }

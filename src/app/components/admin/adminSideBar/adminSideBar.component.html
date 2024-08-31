@@ -1,29 +1,36 @@
 <div class="side-bar">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="">
-    <ul>
-        <li  [routerLink]="['home']" [routerLinkActive]="'active'">
-            <i class="fa-solid fa-chart-simple"></i>
-            Dashboard
-        </li>
-        <li  [routerLink]="['users']" [routerLinkActive]="'active'">
-            <i class="fa-solid fa-users"></i>
-            Users
-        </li>
-        <li [routerLink]="['subscriptions']" [routerLinkActive]="'active'">
-            <i class="fa-solid fa-coins"></i>
-            Subscriptions
-        </li>
-        <li [routerLink]="['movies']" [routerLinkActive]="'active'">
-            <i class="fa-solid fa-film"></i>
-            Movies
-        </li>
-        <!-- <li [routerLink]="['settings']" [routerLinkActive]="'active'">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+    alt=""
+  />
+  <ul>
+    <li [routerLink]="['home']" [routerLinkActive]="'active'">
+      <i class="fa-solid fa-chart-simple"></i>
+      Dashboard
+    </li>
+    @if (role.can([roles.admin])) {
+    <li [routerLink]="['users']" [routerLinkActive]="'active'">
+      <i class="fa-solid fa-users"></i>
+      Users
+    </li>
+    <li [routerLink]="['subscriptions']" [routerLinkActive]="'active'">
+      <i class="fa-solid fa-coins"></i>
+      Subscriptions
+    </li>
+    }
+     @if(role.can([roles.admin,roles.contentManager])){
+    <li [routerLink]="['movies']" [routerLinkActive]="'active'">
+      <i class="fa-solid fa-film"></i>
+      Movies
+    </li>
+    }
+    <!-- <li [routerLink]="['settings']" [routerLinkActive]="'active'">
             <i class="fa-solid fa-sliders"></i>
             Settings
         </li> -->
-    </ul>
-    <div class="logout">
-      <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <p>Logout</p>
-    </div>
+  </ul>
+  <div (click)="auth.logout()" style="cursor: pointer" class="logout">
+    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+    <p>Logout</p>
+  </div>
 </div>

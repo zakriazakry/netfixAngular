@@ -18,7 +18,7 @@
         </div>
          <!-- @if (!isAuth) { -->
           @if (isAuth) {
-            <button [routerLink]="['/home']">Go Account</button>
+            <button [routerLink]="[role.can([roles.admin,roles.contentManager]) ? 'dashboard': 'home']">Go Account</button>
           }@else{
           <button [routerLink]="['/auth/login']" >Sign In</button>
         }

@@ -6,6 +6,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { MoviesComponent } from './movies/movies.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { MoviedetailsDhComponent } from './movies/moviedetails.dh/moviedetails.dh.component';
+import { roleGuard } from '../../gards/role.guard';
+import { Roles } from '../../shared/role';
 
 const routes: Routes = [
   {
@@ -19,6 +21,10 @@ const routes: Routes = [
   },
   {
     path: "users",
+    canActivate : [roleGuard],
+    data:{
+      'roles' : [Roles.admin]
+    },
     children: [
       {
         path: "",

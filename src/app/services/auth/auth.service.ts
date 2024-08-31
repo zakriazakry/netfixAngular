@@ -39,9 +39,11 @@ export class AuthService {
         "email": email,
         "password": password
       }).subscribe({
-        next:async (value: apiRes)=> {
-          const encryptedToken = await this.encryptionService.encrypt(value.msg!);
+        next:async (value: apiRes | any)=> {
+          const encryptedToken =  this.encryptionService.encrypt(value.msg!);
+          const roles =  this.encryptionService.encrypt(JSON.stringify(value.roles!));
           localStorage.setItem('token', encryptedToken!)
+          localStorage.setItem('roles', roles!)
           console.log(value);
           resolve(value);
         },

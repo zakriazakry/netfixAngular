@@ -38,4 +38,10 @@
   }
 }
 
-
+::ng-deep .success-dialog {
+  color: white !important;
+  background-color: red !important;
+  .mat-simple-snackbar-action {
+      color: white !important;
+  }
+}
