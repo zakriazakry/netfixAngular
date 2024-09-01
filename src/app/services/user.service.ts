@@ -13,8 +13,6 @@ http = inject(HttpClient);
 constructor() { }
 
   getUserData (userID:any) : Observable<apiRes>{
-   return this.http.get<apiRes>(`${environment.baseUrl}user/${userID}`,{
-    headers:appHttpHeader
-   });
+   return this.http.get<apiRes>(`${environment.baseUrl}user/${userID}`);
   }
 }

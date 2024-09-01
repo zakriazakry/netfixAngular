@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-serverError',
   standalone: true,
-  imports : [],
+  imports : [RouterLink],
   templateUrl: './serverError.component.html',
-  styleUrls: ['./serverError.component.css']
+  styleUrls: ['./serverError.component.scss']
 })
 export class ServerErrorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router :Router) { }
 
   ngOnInit() {
+  }
+  goBack() {
+    this.router.navigateByUrl('/', { replaceUrl: true });
   }
 
 }

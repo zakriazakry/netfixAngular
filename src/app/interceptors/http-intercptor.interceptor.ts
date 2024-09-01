@@ -1,29 +1,41 @@
+import { async } from '@angular/core/testing';
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 import { AuthService } from '../services/auth/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { appHttpHeader } from '../shared/httpheader';
+import { EncryptionService } from '../services/encryption.service';
 
-export const httpInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
-  console.log("Interceptor triggered...");
+export const  httpInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   const auth = inject(AuthService);
+ const encryptionService = inject(EncryptionService);
+  req.clone({
+    headers : appHttpHeader
+  });
+  console.log(req.headers);
   return next(req).pipe(
     tap({
-      next: (res : any) => {
-        // Error Caption
-        // Error Server
-        if(res.status >= 500){
-          router.navigateByUrl("errors/server")
-          return;
-        }
-        console.log("---------------");
-        console.log(res.status);
-        console.log("---------------");
-      },
-      error: (err) => {
-        console.error("Error in interceptor:", err);
+      next: (event) => {
       }
+    }),
+    catchError((error: HttpErrorResponse) => {
+      if (error.status >= 500) {
+        router.navigate(["errors","server"],{replaceUrl:true,state:{
+          'isInterceptor' : true
+        }});
+      } else if (error.status === 401) {
+        auth.logout();
+      }else if (error.status === 403) {
+        //
+        console.log("interceptor");
+        router.navigate(["errors","forbidden"],{replaceUrl:true,state:{
+          'isInterceptor' : true
+        }});
+      }
+      throw error;
     })
   );
 };

@@ -85,26 +85,3 @@ export class AuthService {
   }
 }
 
-// import * as CryptoJS from 'crypto-js';
-// encryptSecretKey: string = "1234";
-// encryptData(data: any): any {
-
-//   try {
-//     return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
-//   } catch (e) {
-//     console.log(e);
-//   }
-// }
-
-// decryptData(data: any): any {
-
-//   try {
-//     const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
-//     if (bytes.toString()) {
-//       return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-//     }
-//     return data;
-//   } catch (e) {
-//     console.log(e);
-//   }
-// }

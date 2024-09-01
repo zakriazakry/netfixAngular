@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, CanActivateFn } from '@angular/router';
 import { Error404Component } from './pages/errors/error404/error404.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -9,6 +9,7 @@ import { roleGuard } from './gards/role.guard';
 import { Roles } from './shared/role';
 import { ServerErrorComponent } from './pages/errors/serverError/serverError.component';
 import { ForbiddenComponent } from './pages/errors/forbidden/forbidden.component';
+import { errorPusherGuard } from './gards/error-pusher.guard';
 export const routes: Routes = [
   {
     path: '',
@@ -47,6 +48,7 @@ export const routes: Routes = [
   // Errors
   {
     path:'errors',
+    canActivate:[errorPusherGuard],
     children:[
       {
         path:'',
