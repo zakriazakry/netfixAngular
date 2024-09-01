@@ -1,0 +1,52 @@
+.natfications {
+    position: absolute;
+    right: 0;
+    z-index: 100;
+    box-sizing: border-box;
+    height: 80vh;
+    padding: 20px;
+    .toast {
+      margin: 20px 0; /* Adjusted margin for better spacing */
+      width: 350px;
+      border-radius: 10px 10px 0 0;
+      background: linear-gradient(to right, rgb(255, 0, 0), rgba(242, 34, 34, 0.577));
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      animation: move 0.8s linear;
+      transition: all 0.3s;
+          cursor: pointer;
+          position: relative;
+      &::before {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          content: '';
+          width: 100%;
+          height: .4rem;
+          z-index: 19;
+          background: orange;
+      }
+      &:hover{
+        scale: 1.05;
+      }
+      i {
+          font-size: 20px;
+      }
+      
+      @keyframes move {
+          from {
+              transform: translateX(100%);
+          }
+          80% {
+              transform: translateX(-10%);
+          }
+          to {
+              transform: translateX(0%);
+          }
+      }
+    }
+  }
+  
