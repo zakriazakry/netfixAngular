@@ -1,4 +1,4 @@
-<div class="user-details">
+<div *ngIf="!isloading" class="user-details">
     <!-- userinfo -->
     <div class="user-info">
       <br>
@@ -38,8 +38,10 @@
       </div>
       <!-- tabs -->
        <div class="tabs">
-        <ng-container *ngComponentOutlet="tabs[tabIndex]"></ng-container>
-
+        <ng-container *ngComponentOutlet="tabs[tabIndex]; inputs:{data}" ></ng-container>
        </div>
      </div>
 </div>
+<div *ngIf="isloading" class="loading" style="height: 80vh;">
+  <div class="loader"></div>
+  </div>

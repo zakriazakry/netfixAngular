@@ -14,10 +14,13 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { MoviesComponent } from './movies/movies.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MainUserDetailsComponent } from './users/user-details/main-user-details/main-user-details.component';
 import { FormsModule } from '@angular/forms';
 import { NbThemeModule, NbToastrModule } from '@nebular/theme';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { appConfig } from '../../app.config';
+import { httpInterceptorInterceptor } from '../../interceptors/http-intercptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,14 +35,21 @@ import { NbThemeModule, NbToastrModule } from '@nebular/theme';
     CommonModule,
     DashboardRoutingModule,
     RouterOutlet,
-    AdminSideBarComponent,MatButtonModule,
-    MatSlideToggleModule,MainUserDetailsComponent,
+    AdminSideBarComponent, MatButtonModule,
+    MatSlideToggleModule, MainUserDetailsComponent,
     NgComponentOutlet,
-    FormsModule,
+    FormsModule,HttpClientModule,
     DashboardCardModule,
     NgxEchartsModule.forRoot({ echarts }),
     NbThemeModule.forRoot({ name: 'dark' }),
     NbToastrModule.forRoot(), // Import here
-],
+  ],
+  // providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useFactory: () => httpInterceptorInterceptor,
+  //     multi: true
+  //   }
+  // ],
 })
 export class DashboardModule { }
