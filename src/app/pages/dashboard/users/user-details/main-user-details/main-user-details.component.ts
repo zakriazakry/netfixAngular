@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { EChartsOption } from 'echarts';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -14,7 +14,7 @@ import { AnimatedCounterComponent } from "../../../../../components/admin/counte
 export class MainUserDetailsComponent implements AfterViewInit {
   @ViewChild('myChart', { static: true }) myChart!: ElementRef;
   private chartInstance!: echarts.ECharts;
-
+  @Input({required : true}) data : any;
   option: EChartsOption = {
     tooltip: {
       formatter: '{a} <br/>{b} : {c}%'

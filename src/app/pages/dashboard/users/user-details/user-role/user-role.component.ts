@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { UserRole } from './../../../../../interfaces/userRole';
-import { Component, HostBinding, inject } from '@angular/core';
+import { Component, HostBinding, inject, Input } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import {
   MatSlideToggleChange,
@@ -18,6 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./user-role.component.scss'],
 })
 export class UserRoleComponent {
+  @Input({required : true}) data : any;
   roleService = inject(RolesService);
   userId: string | number | null = 0;
   router = inject(ActivatedRoute);
