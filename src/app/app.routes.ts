@@ -7,6 +7,8 @@ import { isAuthGuard, isNotAuthGuard } from './gards/auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { roleGuard } from './gards/role.guard';
 import { Roles } from './shared/role';
+import { ServerErrorComponent } from './pages/errors/serverError/serverError.component';
+import { ForbiddenComponent } from './pages/errors/forbidden/forbidden.component';
 export const routes: Routes = [
   {
     path: '',
@@ -42,8 +44,32 @@ export const routes: Routes = [
     path: 'player',
     component:PlayerComponent
   },
+  // Errors
+  {
+    path:'errors',
+    children:[
+      {
+        path:'',
+        pathMatch:'full',
+        redirectTo:'/home',
+      },
+      {
+        path:'server',
+        component:ServerErrorComponent,
+
+      },
+      {
+        path:'not-found',
+        component:Error404Component
+      },
+      {
+        path:'forbidden',
+        component:ForbiddenComponent
+      }
+    ]
+  },
   {
     path: '**',
-    component: Error404Component
+    redirectTo:'errors/not-found'
   }
 ];
