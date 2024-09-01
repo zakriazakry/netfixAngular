@@ -8,32 +8,33 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { appHttpHeader } from '../shared/httpheader';
 import { EncryptionService } from '../services/encryption.service';
 
-export const  httpInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
+export const httpInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   const auth = inject(AuthService);
- const encryptionService = inject(EncryptionService);
-  req.clone({
-    headers : appHttpHeader
+  const modifiedReq = req.clone({
+    headers: appHttpHeader
   });
-  console.log(req.headers);
-  return next(req).pipe(
+  return next(modifiedReq).pipe(
     tap({
       next: (event) => {
       }
     }),
     catchError((error: HttpErrorResponse) => {
       if (error.status >= 500) {
-        router.navigate(["errors","server"],{replaceUrl:true,state:{
-          'isInterceptor' : true
-        }});
+        router.navigate(["errors", "server"], {
+          replaceUrl: true, state: {
+            'isInterceptor': true
+          }
+        });
       } else if (error.status === 401) {
         auth.logout();
-      }else if (error.status === 403) {
+      } else if (error.status === 403) {
         //
-        console.log("interceptor");
-        router.navigate(["errors","forbidden"],{replaceUrl:true,state:{
-          'isInterceptor' : true
-        }});
+        router.navigate(["errors", "forbidden"], {
+          replaceUrl: true, state: {
+            'isInterceptor': true
+          }
+        });
       }
       throw error;
     })
