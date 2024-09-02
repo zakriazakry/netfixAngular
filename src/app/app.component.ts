@@ -18,7 +18,7 @@ import { ToasterService } from './services/toaster.service';
 export class AppComponent {
   constructor(private toasterService: ToasterService) {}
   showToast() {
-    this.toasterService.showToast('تم الضغط على الزر!');
+    this.toasterService.showToast('تم الضغط على الزر!','sssss');
   }
 
 }

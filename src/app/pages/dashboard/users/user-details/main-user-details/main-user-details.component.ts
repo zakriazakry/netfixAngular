@@ -1,12 +1,14 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { EChartsOption } from 'echarts';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { AnimatedCounterComponent } from "../../../../../components/admin/counter/counter.component";
+import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-main-user-details',
   standalone: true,
-  imports: [NgxEchartsModule, AnimatedCounterComponent],
+  imports: [NgxEchartsModule, AnimatedCounterComponent, ReactiveFormsModule, CommonModule],
   templateUrl: './main-user-details.component.html',
   styleUrl: './main-user-details.component.scss'
 })
@@ -14,7 +16,7 @@ import { AnimatedCounterComponent } from "../../../../../components/admin/counte
 export class MainUserDetailsComponent implements AfterViewInit {
   @ViewChild('myChart', { static: true }) myChart!: ElementRef;
   private chartInstance!: echarts.ECharts;
-  @Input({required : true}) data : any;
+  @Input({ required: true }) data: any;
   option: EChartsOption = {
     tooltip: {
       formatter: '{a} <br/>{b} : {c}%'
@@ -27,7 +29,7 @@ export class MainUserDetailsComponent implements AfterViewInit {
           show: true
         },
         detail: {
-          valueAnimation: true,color:"red",
+          valueAnimation: true, color: "red",
           formatter: '{value}'
         },
         data: [
@@ -35,15 +37,19 @@ export class MainUserDetailsComponent implements AfterViewInit {
             value: 0,
             name: 'MB/s'
           }
-        ],color:"red"
+        ], color: "red"
       }
     ]
   };
-
+  form: FormGroup = new FormGroup({
+    firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    phone: new FormControl('', [Validators.required, Validators.pattern(/^(092|091|094)\d{7}$/)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+  });
   ngAfterViewInit() {
     this.chartInstance = echarts.init(this.myChart.nativeElement);
     this.chartInstance.setOption(this.option);
-
     setInterval(() => {
       this.chartInstance.setOption<echarts.EChartsOption>({
         series: [
@@ -68,5 +74,14 @@ export class MainUserDetailsComponent implements AfterViewInit {
         ]
       });
     }, 2000);
+    // forms
+    // this.form = new FormGroup();
+  }
+  onSubmit() {
+    if (this.form.valid) {
+      console.log('Form Submitted', this.form.value);
+    } else {
+      console.log('Form is invalid');
+    }
   }
 }

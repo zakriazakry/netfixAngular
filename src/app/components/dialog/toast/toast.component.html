@@ -1,10 +1,11 @@
-<div #natfications class="natfications">
-    <div *ngIf="message !== null" class="toast" class="toast">
-        <i class="fa fa-user" aria-hidden="true"></i>
-        <div class="content">
-            <h3>title</h3>
-            <p>{{message}}</p>
-        </div>
-        <i class="fa-solid fa-xmark"></i>
+<div #notifications class="notifications">
+  <div *ngFor="let item of toasts;let i = index" class="toast">
+    <i class="fa-solid fa-circle-exclamation icon" aria-hidden="true"></i>
+    <div class="content">
+      <h3>{{ item.title }}</h3>
+      <div class="sps"></div>
+      <p>{{ item.content }}</p>
     </div>
+    <i (click)="closeTab(i)" class="fa-solid fa-xmark"></i>
+  </div>
 </div>

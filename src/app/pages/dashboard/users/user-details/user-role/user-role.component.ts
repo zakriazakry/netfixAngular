@@ -1,3 +1,5 @@
+import { switchMap } from 'rxjs/operators';
+import { ToasterService } from './../../../../../services/toaster.service';
 import { CommonModule } from '@angular/common';
 import { UserRole } from './../../../../../interfaces/userRole';
 import { Component, HostBinding, inject, Input } from '@angular/core';
@@ -18,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./user-role.component.scss'],
 })
 export class UserRoleComponent {
-  @Input({required : true}) data : any;
+  @Input({ required: true }) data: any;
   roleService = inject(RolesService);
   userId: string | number | null = 0;
   router = inject(ActivatedRoute);
@@ -31,13 +33,13 @@ export class UserRoleComponent {
   @HostBinding('class')
   classes = 'example-items-rows';
 
-  constructor(
-    private snackBar: MatSnackBar
-  ) {
+  ngAfterViewInit(): void {
     this.getData();
   }
 
   getData() {
+    // console.log(this.data.roles);
+    // return this.data.roles;
     this.isloading = true;
     this.router.paramMap.subscribe((params) => {
       this.userId = params.get('id');
@@ -52,7 +54,7 @@ export class UserRoleComponent {
           },
           (err) => {
             this.isloading = false;
-            this.showSnackbar('Error loading roles');
+            this.showSnackbar('Roles', 'Error loading roles');
           }
         );
       } else {
@@ -75,23 +77,18 @@ export class UserRoleComponent {
       .setUserRole(this.userId, this.roleChecked)
       .then((res) => {
         console.log('Roles updated successfully:', res);
-        this.showSnackbar(res.msg ?? 'error');
+        this.showSnackbar('Roles', res.msg ?? 'error');
+        this.getData();
       })
       .catch((err) => {
-        console.error('Error updating roles:', err);
-        this.showSnackbar('Error updating roles');
+        this.showSnackbar('Roles', 'Error updating roles:' + err);
       })
       .finally(() => {
         this.isloading = false;
       });
   }
-
-  showSnackbar(title: string) {
-    this.snackBar.open(title, 'Close', {
-      duration: 3000,
-      verticalPosition: 'top',
-      horizontalPosition: 'right',
-      panelClass: 'success-dialog',
-    });
+  ts = inject(ToasterService);
+  showSnackbar(title: string, docs: string) {
+    this.ts.showToast(title, docs);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MoviesService } from '../../../services/movies/movies.service';
+import { ToasterService } from '../../../services/toaster.service';
 
 @Component({
   selector: 'app-subscription',
@@ -16,7 +17,7 @@ export class SubscriptionComponent {
   perPage = 15;
   end = this.perPage;
 
-  constructor() {
+  constructor( private toaster :ToasterService) {
     this.isLoading = true;
     //
     this.data.push ({
@@ -45,6 +46,10 @@ export class SubscriptionComponent {
     return [];
   }
 
+  deleteSubscript()
+{
+this.toaster.showToast("Delete subscrtion" , "The subscrip is Deleted");
+}
   nextPage() {
     if (this.end < this.data.length) {
       this.start += this.perPage;

@@ -1,21 +1,26 @@
-.natfications {
+.notifications {
     position: absolute;
     right: 0;
     z-index: 100;
     box-sizing: border-box;
-    height: 80vh;
+    // height: 80vh;
+    max-height: 100vh;
+    // background: red;
     padding: 20px;
+    overflow: hidden;
+    overflow-y: scroll;
     .toast {
-      margin: 20px 0; /* Adjusted margin for better spacing */
+      margin: 20px 0;
       width: 350px;
+      // border-left: 5px solid red;
       border-radius: 10px 10px 0 0;
-      background: linear-gradient(to right, rgb(255, 0, 0), rgba(242, 34, 34, 0.577));
+      background-color: rgb(44, 44, 44);
       padding: 20px;
       display: flex;
       gap: 20px;
       align-items: center;
       justify-content: space-between;
-      animation: move 0.8s linear;
+      animation: move 0.5s ease-in-out;
       transition: all 0.3s;
           cursor: pointer;
           position: relative;
@@ -28,20 +33,43 @@
           height: .4rem;
           z-index: 19;
           background: orange;
+          animation: lineMove 3s linear forwards;
+          @keyframes lineMove {
+            to{
+              width: 0%;
+            }
+          }
       }
       &:hover{
         scale: 1.05;
       }
       i {
           font-size: 20px;
+          &.icon{
+            color: orange;
+            font-size: 30px;
+            opacity: 1;
+            animation: mochan 2s linear infinite;
+          }
+          @keyframes mochan {
+            from{
+            opacity: 1;
+            }
+            50%{
+              opacity: 0.3;
+            }
+            to{
+              opacity: 1;
+            }
+          }
       }
-      
+
       @keyframes move {
           from {
               transform: translateX(100%);
           }
           80% {
-              transform: translateX(-10%);
+              transform: translateX(-6%);
           }
           to {
               transform: translateX(0%);
@@ -49,4 +77,6 @@
       }
     }
   }
-  
+.sps{
+  height: 10px;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, inject } from '@angular/core';
 import { ToasterService } from '../../../services/toaster.service';
 import { CommonModule } from '@angular/common';
 
@@ -9,41 +9,15 @@ import { CommonModule } from '@angular/common';
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss']
 })
-export class ToastComponent implements OnInit {
-  @ViewChild('natfications', { static: true }) natfications!: ElementRef;
-  message: string | null = null;
-
-  constructor(private toasterService: ToasterService) {}
-
-  ngOnInit() {
-    this.toasterService.toasterState.subscribe((message) => {
-      this.message = message;
-      this.showToast();
-      setTimeout(() => {
-        this.message = null;
-        this.clearToast();
-      }, 2000); // إخفاء التوستر بعد 2 ثوانٍ
-    });
+export class ToastComponent implements OnInit{
+  toastService = inject(ToasterService);
+  toasts : any[] = [];
+  ngOnInit(){
+    this.toastService.getToasts().subscribe(res=>{
+      this.toasts = res;
+    })
   }
-
-  showToast() {
-    const toast = document.createElement('div');
-    toast.innerHTML = `
-      <div class="toast">
-        <i class="fa fa-user" aria-hidden="true"></i>
-        <div class="content">
-          <h3>title</h3>
-          <p>${this.message}</p>
-        </div>
-        <i class="fa-solid fa-xmark"></i>
-      </div>
-    `;
-    this.natfications.nativeElement.appendChild(toast);
-  }
-
-  clearToast() {
-    if (this.natfications.nativeElement.firstChild) {
-      this.natfications.nativeElement.removeChild(this.natfications.nativeElement.firstChild);
-    }
-  }
+  closeTab(index:number){
+    this.toastService.closeToast(index);
+}
 }

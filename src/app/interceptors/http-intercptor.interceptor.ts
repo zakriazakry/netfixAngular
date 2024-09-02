@@ -11,10 +11,14 @@ import { EncryptionService } from '../services/encryption.service';
 export const httpInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   const auth = inject(AuthService);
-  const modifiedReq = req.clone({
-    headers: appHttpHeader
-  });
-  return next(modifiedReq).pipe(
+  const isXvip = req.url.includes('xvip');
+   var modifiedReq = null;
+  if (!isXvip) {
+     modifiedReq = req.clone({
+      headers: appHttpHeader
+    });
+  }
+  return next(modifiedReq ?? req).pipe(
     tap({
       next: (event) => {
       }

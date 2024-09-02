@@ -14,7 +14,7 @@ userService = inject(UserService);
 
 
   tabs: any[] = [MainUserDetailsComponent, TransactionsComponent, UserRoleComponent]
-  tabIndex = 2;
+  tabIndex = 0;
   route = inject(ActivatedRoute);
   userID: string | null = null;
   isloading :boolean = false;

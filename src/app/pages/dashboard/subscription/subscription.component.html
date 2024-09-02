@@ -45,7 +45,7 @@
         <td>{{movie.profit + " LYD"}}</td>
         <td>{{movie.created_at | date}}</td>
         <td class="options">
-          <i  class="fa-solid fa-trash"></i>
+          <i (click)="deleteSubscript()" class="fa-solid fa-trash"></i>
         </td>
       </tr>
     </tbody>
