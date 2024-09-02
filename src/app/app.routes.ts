@@ -10,6 +10,7 @@ import { Roles } from './shared/role';
 import { ServerErrorComponent } from './pages/errors/serverError/serverError.component';
 import { ForbiddenComponent } from './pages/errors/forbidden/forbidden.component';
 import { errorPusherGuard } from './gards/error-pusher.guard';
+import { PricingComponent } from './pages/home/pricing/pricing.component';
 export const routes: Routes = [
   {
     path: '',
@@ -44,6 +45,11 @@ export const routes: Routes = [
   {
     path: 'player',
     component:PlayerComponent
+  },
+  {
+    path:'pricing',
+    pathMatch:'full',
+    component:PricingComponent
   },
   // Errors
   {

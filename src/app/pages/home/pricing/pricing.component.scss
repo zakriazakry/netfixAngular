@@ -1,0 +1,88 @@
+.main {
+  width: 100%;
+  height: 100vh;
+  // background: white;
+  display: flex;
+  align-items: start;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+  p {
+    padding: 6px 0;
+    color: rgb(173, 173, 173);
+  }
+  .boxPricing {
+    align-self: center;
+    width: 80%;
+    .ElementPrice {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr;
+      .box {
+        margin-bottom: 25px;
+        width: 120px;
+        height: 120px;
+        background: rgb(255, 19, 19);
+        opacity: 0.5;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        &.active {
+          opacity: 1;
+          position: relative;
+          border-radius: 6px;
+          &::after {
+            content: "";
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: red;
+            bottom: -10px;
+            transform: rotate(45deg);
+          }
+        }
+      }
+      .item {
+        padding: 10px 20px;
+        &.active{
+         p{ color: rgb(255, 62, 62);
+        font-size: 18px;
+        }
+        }
+      }
+    }
+  }
+  .divider {
+    height: 1px;
+    width: 94%;
+    background: rgb(214, 214, 214);
+  }
+  .btm{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-self: center;
+    width: 72%;
+    button{
+      align-self: flex-end;
+      right: 20px;
+      padding: 10px 20px;
+      // margin:30px 15% 0  0;
+      border: none;
+      border-radius: 5px;
+      background: red;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover{
+        opacity: 0.7;
+      }
+    }
+  }
+
+}

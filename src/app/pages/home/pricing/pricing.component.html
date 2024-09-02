@@ -1,0 +1,44 @@
+<div class="main">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+    width="130px"
+    alt=""
+    class="logo"
+  />
+  <br />
+  <br />
+  <br />
+  <h1>Netflix PLaning</h1>
+  <br />
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+  <div class="boxPricing">
+    <div class="ElementPrice">
+      <div class=""></div>
+      <div class="box">Basic</div>
+      <div class="box active">standard</div>
+      <div class="box">Premium</div>
+    </div>
+    <!-- rows -->
+    @for (item of rows; track $index) {
+    <div class="ElementPrice">
+      <div class="item">
+        <p>{{ item.title }}</p>
+      </div>
+      <div class="item ">
+        <p>{{ item.Basic }}</p>
+      </div>
+      <div class="item active">
+        <p>{{ item.Standard }}</p>
+      </div>
+      <div class="item">
+        <p>{{ item.Premium }}</p>
+      </div>
+    </div>
+    <div class="divider"></div>
+    }
+  </div>
+  <div class="btm">
+  <p>You can not cancel subscriptions</p>
+  <button>subscript</button>
+  </div>
+</div>
