@@ -21,4 +21,11 @@ export class AppComponent {
     this.toasterService.showToast('تم الضغط على الزر!','sssss');
   }
 
+  openDialog() {
+    const dialog = document.getElementById('custom-dialog');
+    if (dialog) {
+      dialog.style.display = 'flex';
+    }
+  }
+
 }

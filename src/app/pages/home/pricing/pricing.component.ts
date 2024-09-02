@@ -36,4 +36,10 @@ export class PricingComponent {
       Premium : "All"
     },
   ];
+  planIndex = 1;
+
+  changePlan(index:number){
+    this.planIndex = index;
+  }
+
 }

@@ -14,9 +14,9 @@
   <div class="boxPricing">
     <div class="ElementPrice">
       <div class=""></div>
-      <div class="box">Basic</div>
-      <div class="box active">standard</div>
-      <div class="box">Premium</div>
+      <div class="box"  [class.active]="planIndex == 0" (click)="changePlan(0)">Basic</div>
+      <div class="box"  [class.active]="planIndex == 1" (click)="changePlan(1)">standard</div>
+      <div class="box"  [class.active]="planIndex == 2" (click)="changePlan(2)">Premium</div>
     </div>
     <!-- rows -->
     @for (item of rows; track $index) {
@@ -24,13 +24,13 @@
       <div class="item">
         <p>{{ item.title }}</p>
       </div>
-      <div class="item ">
+      <div class="item" [class.active]="planIndex == 0">
         <p>{{ item.Basic }}</p>
       </div>
-      <div class="item active">
+      <div class="item" [class.active]="planIndex == 1">
         <p>{{ item.Standard }}</p>
       </div>
-      <div class="item">
+      <div class="item" [class.active]="planIndex == 2">
         <p>{{ item.Premium }}</p>
       </div>
     </div>

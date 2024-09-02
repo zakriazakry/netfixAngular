@@ -7,7 +7,6 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class ToasterService {
   private toasts: { title: string, content: string }[] = [];
   private toastSubject = new BehaviorSubject<{ title: string, content: string }[]>(this.toasts);
-
   toasts$ = this.toastSubject.asObservable();
 
   showToast(title: string, content: string) {
