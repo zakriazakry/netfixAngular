@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NavBarComponent } from "../../../components/main/nav-bar/nav-bar.component";
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { PaymentDialogComponent } from '../../../components/dialog/payment-dialog/payment-dialog.component';
 
 @Component({
   selector: 'app-pricing',
@@ -42,4 +44,8 @@ export class PricingComponent {
     this.planIndex = index;
   }
 
+    readonly dialog = inject(MatDialog);
+  payment(){
+    this.dialog.open(PaymentDialogComponent);
+  }
 }

@@ -1,0 +1,108 @@
+.main {
+  width: 80vw;
+  height: 90vh;
+  background: rgb(36, 36, 36);
+  display: flex;
+  align-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  h2,
+  h3 {
+    font-weight: normal;
+  }
+  span {
+    font-weight: bold;
+  }
+  .paymentMethods {
+    box-sizing: border-box;
+    padding: 0 30px;
+    background: rgba(46, 46, 46, 0.699);
+    width: 50%;
+    height: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // align-items: start;
+    // padding: 20px;
+    // logo
+    .logo {
+      display: flex;
+      align-items: center;
+      #logoImg {
+        font-size: 18px;
+        padding-right: 20px;
+        cursor: pointer;
+      }
+    }
+    button {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 18px;
+      background-color: black;
+      border: none;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      #gLogo {
+        width: 30px;
+      }
+      &:hover {
+        background-color: rgb(20, 16, 16);
+      }
+    }
+    .card {
+      border: 2px solid grey;
+      border-radius: 5px;
+      width: 100%;
+      // margin: 0 20px;
+      .titlePay {
+        width: 100%;
+        display: flex;
+        padding: 10px ;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .listOfCards {
+        display: flex;
+        img {
+          padding: 0 10px;
+        }
+      }
+    }
+    .Pay{
+      background-color: grey;
+      &:hover{
+      background-color: rgb(104, 104, 104);
+      }
+    }
+  }
+  .PaymentInvoice{
+    width: 70%;
+  box-sizing: border-box;
+  height: 100%;
+    padding: 90px 40px;
+    .item{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .content{
+        p{
+          color:grey;
+        }
+      }
+    }
+  }
+}
+.sps {
+  height: 10px;
+}
