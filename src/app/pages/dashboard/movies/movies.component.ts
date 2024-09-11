@@ -37,7 +37,7 @@ export class MoviesComponent {
   seach() {
     const value = this.inputSearch.toLowerCase().trim();
     this.movies = this.allMovies.filter(item => {
-      return item.name.trim().toLowerCase().includes(value) ;
+      return item.name.trim().toLowerCase().includes(value);
     });
   }
   // ============================
@@ -65,7 +65,22 @@ export class MoviesComponent {
     }
     console.log(this.start, this.end);
   }
-
-
+  // ----------------- tree
+  treeMenu = [
+    {
+      title: "Movies Trands",
+      list: ['2024', '2023', '2022', '2021'],
+      isShow: false,
+    },
+    {
+      title: "Movies Action",
+      list: ['2024', '2023', '2022', '2021'],
+      isShow: false,
+    },
+  ];
+  toogelTree(item: any) {
+    item.isShow = !item.isShow;
+    console.log(item);
+  }
 }
 

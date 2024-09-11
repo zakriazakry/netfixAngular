@@ -1,59 +1,97 @@
-<div class="movie">
-  <div class="info">
-    <br>
-    <h1>Movies</h1>
-    <br>
-    <p>List of Movies in web site</p>
+<div class="main">
+  <div class="tree">
+    <h1>Filter</h1>
+    <br />
+    <ul class="items">
+      <li *ngFor="let item of treeMenu; track: item">
+        <div class="header">
+          <div (click)="toogelTree(item)" class="title">
+            <i
+              [class]="
+                item.isShow
+                  ? 'fa-solid fa-caret-down'
+                  : 'fa-solid fa-caret-right'
+              "
+            ></i>
+            <p>{{ item.title }}</p>
+          </div>
+        </div>
+        <ul [class.show]="item.isShow" class="list show">
+          <li *ngFor="let element of item.list; track: element">
+            <h4>{{ element }}</h4>
+            <i class="fa-solid fa-ellipsis"></i>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
-  <br>
-  <div class="conterller">
-    <div class="search">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input [(ngModel)]="inputSearch" (keyup)="seach()" type="text" placeholder="search movie name">
+  <div class="movie">
+    <div class="info">
+      <br />
+      <h1>Movies</h1>
+      <br />
+      <p>List of Movies in web site</p>
     </div>
+    <br />
+    <div class="conterller">
+      <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+          [(ngModel)]="inputSearch"
+          (keyup)="seach()"
+          type="text"
+          placeholder="search movie name"
+        />
+      </div>
       <div class="btns">
         <button>
           <i class="fa-solid fa-rotate"></i>
-          Refresh Package</button>
-        </div>
+          Refresh Package
+        </button>
+      </div>
+    </div>
+    <br />
+
+    <table>
+      <thead>
+        <tr>
+          <th>#ID</th>
+          <th>Poster</th>
+          <th>Title</th>
+          <th>rating</th>
+          <th>stream_id</th>
+          <th>category_id</th>
+          <th>createad_at</th>
+          <th>option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movie of movElement; let i = index">
+          <td>#{{ movie.num }}</td>
+          <td><img class="poster" [src]="movie.stream_icon" alt="" /></td>
+          <td>{{ movie.name }}</td>
+          <td>
+            <i style="color: yellow" class="fa-solid fa-star"></i>
+            {{ movie.rating_5based }}
+          </td>
+          <td>{{ movie.stream_id }}</td>
+          <td>{{ movie.category_id }}</td>
+          <td>{{ movie.added | date }}</td>
+          <td class="options">
+            <i class="fa-solid fa-cloud"></i>
+            <i class="fa-solid fa-trash"></i>
+            <i
+              [routerLink]="[movie.stream_id]"
+              class="fa-regular fa-pen-to-square"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagnation">
+      <i (click)="prevPage()" class="fa-solid fa-chevron-left"></i>
+      <i (click)="nextPage()" class="fa-solid fa-chevron-right"></i>
+    </div>
   </div>
-  <br>
-
-  <table >
-    <thead >
-      <tr>
-        <th>#ID</th>
-        <th>Poster</th>
-        <th>Title</th>
-        <th>rating</th>
-        <th>stream_id</th>
-        <th>category_id</th>
-        <th>createad_at</th>
-        <th>option</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr  *ngFor="let movie of movElement;let i=index;">
-        <td>#{{movie.num}}</td>
-        <td ><img class="poster" [src]="movie.stream_icon" alt=""></td>
-        <td>{{movie.name}}</td>
-        <td>
-          <i style="color: yellow;" class="fa-solid fa-star"></i>
-          {{movie.rating_5based}}</td>
-        <td>{{movie.stream_id}}</td>
-        <td>{{movie.category_id}}</td>
-        <td>{{movie.added | date}}</td>
-        <td class="options">
-          <i class="fa-solid fa-cloud"></i>
-          <i  class="fa-solid fa-trash"></i>
-          <i [routerLink]="[movie.stream_id]" class="fa-regular fa-pen-to-square"></i>
-        </td>
-      </tr>
-    </tbody>
-   </table>
-
-   <div class="pagnation">
-    <i (click)="prevPage()" class="fa-solid fa-chevron-left"></i>
-    <i (click)="nextPage()" class="fa-solid fa-chevron-right"></i>
-   </div>
 </div>
