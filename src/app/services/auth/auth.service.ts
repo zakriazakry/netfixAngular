@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
 import { apiRes } from '../../interfaces/apiRes.interface';
-
 import { environment } from '../../../environments/environment.development';
-import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { EncryptionService } from '../encryption.service';
-
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 
 
@@ -14,6 +12,7 @@ import { EncryptionService } from '../encryption.service';
   providedIn: 'root'
 })
 export class AuthService {
+  destoryRef = inject(DestroyRef);
   http = inject(HttpClient);
   router = inject(Router);
   constructor(
@@ -38,10 +37,10 @@ export class AuthService {
       this.http.post<apiRes>(url, {
         "email": email,
         "password": password
-      }).subscribe({
-        next:async (value: apiRes | any)=> {
-          const encryptedToken =  this.encryptionService.encrypt(value.msg!);
-          const roles =  this.encryptionService.encrypt(JSON.stringify(value.roles!));
+      }).pipe(takeUntilDestroyed(this.destoryRef)).subscribe({
+        next: async (value: apiRes | any) => {
+          const encryptedToken = this.encryptionService.encrypt(value.msg!);
+          const roles = this.encryptionService.encrypt(JSON.stringify(value.roles!));
           localStorage.setItem('token', encryptedToken!)
           localStorage.setItem('roles', roles!)
           console.log(value);
@@ -64,7 +63,7 @@ export class AuthService {
   async signup(userInput: object): Promise<apiRes> {
     const url = `${environment.baseUrl}auth/signup`
     return new Promise((resolve, reject) => {
-      this.http.post<apiRes>(url, userInput).subscribe({
+      this.http.post<apiRes>(url, userInput).pipe(takeUntilDestroyed(this.destoryRef)).subscribe({
         next(value: apiRes) {
           resolve(value);
         }, error(err) {
